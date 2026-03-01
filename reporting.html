@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Regulatory Reporting — Compliance & Regulatory Hub</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="top-banner">
+  <div class="brand">Compliance &amp; <span>Regulatory Hub</span></div>
+  <span class="badge">Internal Use Only</span>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Getting Started</div>
+    <a href="index.html">Overview &amp; Framework</a>
+
+    <div class="nav-section">Core Programs</div>
+    <a href="kyc.html">Know Your Customer (KYC)</a>
+    <a href="aml.html">Anti-Money Laundering (AML)</a>
+    <a href="bsa.html">Bank Secrecy Act (BSA)</a>
+    <a href="cdd.html">Customer Due Diligence (CDD/EDD)</a>
+
+    <div class="nav-section">Screening &amp; Reporting</div>
+    <a href="sanctions.html">OFAC Sanctions Screening</a>
+    <a href="reporting.html" class="active">Regulatory Reporting</a>
+
+    <div class="nav-section">Governance</div>
+    <a href="audit.html">Audit Trail &amp; Logging</a>
+  </nav>
+
+  <main class="content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="index.html">Compliance &amp; Regulatory Hub</a> › Screening &amp; Reporting</div>
+      <h1>Regulatory Reporting</h1>
+      <div class="subtitle">SAR filing standards, CTR procedures, FinCEN timelines, quality standards, and voluntary disclosure protocols.</div>
+    </div>
+
+    <div class="admonition imp">
+      <div class="adm-title">Filing Obligations</div>
+      All BSA reports must be filed electronically through the FinCEN BSA E-Filing System. Paper filings are not accepted. Failure to file a required SAR or CTR is a federal violation subject to civil penalties up to $57,317 per day for negligent violations and up to $1 million per day for willful violations.
+    </div>
+
+    <h2>Suspicious Activity Report (SAR)</h2>
+    <h3>Filing Thresholds</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Institution Type</th><th>Mandatory Threshold</th><th>Discretionary Filing</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Banks / Credit Unions</td><td>≥$5,000 (known or suspected violation)</td><td>Below $5,000 if activity warrants</td></tr>
+          <tr><td>Money Services Businesses</td><td>≥$2,000 (known or suspected violation)</td><td>Below $2,000 if activity warrants</td></tr>
+          <tr><td>Broker-Dealers</td><td>≥$5,000 (known or suspected violation)</td><td>Below $5,000 if activity warrants</td></tr>
+          <tr><td>Insurance Companies</td><td>≥$5,000 (covered products only)</td><td>Below $5,000 if activity warrants</td></tr>
+          <tr><td>Casinos / Gaming</td><td>≥$5,000 (known or suspected violation)</td><td>Below $5,000 if activity warrants</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>SAR Filing Timelines</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Situation</th><th>Deadline</th><th>Regulation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Known or suspected criminal violation — subject identified</td><td>30 calendar days from date of initial detection</td><td>31 CFR 1020.320(b)</td></tr>
+          <tr><td>Known or suspected criminal violation — no subject identified</td><td>60 calendar days from date of initial detection</td><td>31 CFR 1020.320(b)</td></tr>
+          <tr><td>Continuing suspicious activity — SAR previously filed</td><td>120-day SAR continuation filing from date of prior SAR</td><td>FinCEN Guidance FIN-2007-G003</td></tr>
+          <tr><td>Any violation requiring immediate attention (terrorism, imminent threat)</td><td>Immediate telephone contact with FinCEN or law enforcement; SAR filed within 30 days</td><td>31 CFR 1020.320(b)(3)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="admonition warn">
+      <div class="adm-title">Tipping Off Prohibition</div>
+      It is unlawful to notify any person named in, or the subject of, a SAR that the report has been filed or is being considered (31 USC 5318(g)(2)). This includes indirect disclosure through email, phone, or actions that suggest investigation. Violation is a federal criminal offense.
+    </div>
+
+    <h3>SAR Quality Standards</h3>
+    <p>FinCEN evaluates SAR quality based on content completeness and narrative clarity. All SARs must:</p>
+    <ul>
+      <li>Answer the "5 W's": Who, What, When, Where, and Why the activity is suspicious</li>
+      <li>Use clear, chronological narrative — avoid jargon and acronyms without definition</li>
+      <li>Identify all subjects with complete identifying information where available</li>
+      <li>Specify exact dollar amounts and transaction dates</li>
+      <li>Describe the typology (e.g., structuring, rapid movement, layering) being reported</li>
+      <li>Reference relevant prior SARs on the same subject where applicable</li>
+      <li>Avoid legal conclusions (do not characterize as "money laundering" — describe the facts)</li>
+    </ul>
+
+    <h3>SAR Sample Narrative Structure</h3>
+    <pre>Subject [FULL NAME], [DOB], [ADDRESS], holds account [ACCOUNT NUMBER]
+opened [DATE].
+
+Between [START DATE] and [END DATE], subject conducted [NUMBER]
+transactions totaling $[AMOUNT] that appear to constitute [TYPOLOGY
+DESCRIPTION — e.g., structuring to evade CTR reporting requirements].
+
+Specifically: [CHRONOLOGICAL DESCRIPTION OF TRANSACTIONS — dates,
+amounts, counterparties, channels].
+
+This activity is suspicious because: [SPECIFIC REASONS — inconsistency
+with customer profile, documented explanations inadequate, pattern
+matches known typology].
+
+[PRIOR SARS / LAW ENFORCEMENT CONTACT / ACCOUNT STATUS IF RELEVANT].</pre>
+
+    <h2>Currency Transaction Report (CTR)</h2>
+    <h3>Filing Requirements Overview</h3>
+    <p>A CTR must be filed for each transaction (or series of related transactions) involving more than $10,000 in currency (cash) conducted by, through, or to a financial institution in a single business day. Key rules:</p>
+    <ul>
+      <li>Multiple transactions by the same customer on the same business day must be aggregated</li>
+      <li>Transactions conducted "on behalf of" another person must be attributed to that person</li>
+      <li>Both deposits and withdrawals meeting the threshold require filing</li>
+      <li>Currency exchanges, coin purchases, and redemptions of monetary instruments also qualify</li>
+    </ul>
+
+    <h3>CTR Operational Process</h3>
+    <ol>
+      <li><strong>Detection</strong> — Teller system or back-office system flags qualifying cash transaction at end of business day</li>
+      <li><strong>Review</strong> — Compliance reviews aggregation accuracy and exemption status</li>
+      <li><strong>Data Collection</strong> — Collect all required fields (subject info, transaction info, account info)</li>
+      <li><strong>OFAC Screening</strong> — Screen CTR subject against OFAC before filing</li>
+      <li><strong>Filing</strong> — File via FinCEN BSA E-Filing System by 11:59 PM (Eastern) on the 15th calendar day after the transaction date</li>
+      <li><strong>Retention</strong> — Store copy in BSA recordkeeping system for 5 years</li>
+    </ol>
+
+    <div class="admonition note">
+      <div class="adm-title">CTR Exemptions</div>
+      Eligible customers may be exempted from CTR filing using FinCEN Form 110 (Designation of Exempt Person / DOEP). Two exemption phases are available. Phase I exempt entities (e.g., banks, publicly traded companies) require no annual renewal. Phase II exempt entities require biennial renewal and annual independent audit of the exemption program.
+    </div>
+
+    <h2>Report Filing Summary — Quick Reference</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Report</th><th>FinCEN Form</th><th>Filing System</th><th>Retention</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Suspicious Activity Report</td><td>FinCEN Form 111 (SAR)</td><td>BSA E-Filing System</td><td>5 years from filing date</td></tr>
+          <tr><td>Currency Transaction Report</td><td>FinCEN Form 112 (CTR)</td><td>BSA E-Filing System</td><td>5 years from filing date</td></tr>
+          <tr><td>Designation of Exempt Person</td><td>FinCEN Form 110 (DOEP)</td><td>BSA E-Filing System</td><td>5 years from last use</td></tr>
+          <tr><td>FBAR</td><td>FinCEN Form 114</td><td>BSA E-Filing System</td><td>5 years from due date</td></tr>
+          <tr><td>OFAC Blocked Property Report</td><td>OFAC Annual Report</td><td>OFAC Portal / GoAML</td><td>5 years from filing date</td></tr>
+          <tr><td>OFAC Rejected Transaction Report</td><td>OFAC RTP Form</td><td>OFAC Portal</td><td>5 years from rejection date</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Quality Assurance &amp; Reporting Metrics</h2>
+    <p>The Compliance function must track and report the following metrics to the BSA Officer and Board on a quarterly basis:</p>
+    <ul>
+      <li>Total SARs filed (by typology, business line, geography)</li>
+      <li>SAR filing timeliness rate (% filed within required deadline)</li>
+      <li>SAR void / amendment rate (indicator of initial quality)</li>
+      <li>Total CTRs filed and CTR exemptions in use</li>
+      <li>Average alert-to-SAR cycle time</li>
+      <li>Alerts closed without SAR — L1, L2, L3 disposition breakdown</li>
+      <li>Law enforcement requests received and response completion rate</li>
+    </ul>
+
+    <div class="admonition tip">
+      <div class="adm-title">Law Enforcement Requests</div>
+      Institutions may share SAR information with law enforcement upon a formal legal process (subpoena, court order, or National Security Letter). FinCEN maintains a 314(b) program allowing voluntary information sharing between financial institutions to identify potential money laundering. Enroll in 314(b) to enable collaborative investigation.
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  Compliance &amp; Regulatory Hub &mdash; Internal Use Only &mdash; Not for External Distribution
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+/* ============================================================
+   Compliance & Regulatory Hub — Enterprise Documentation CSS
+   MadCap Flare-inspired static documentation theme
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:    #1a3a5c;
+  --accent:     #0d6efd;
+  --accent-lt:  #e8f0fe;
+  --sidebar-bg: #f4f6f9;
+  --border:     #d0d7e2;
+  --text:       #1c2533;
+  --muted:      #5a6a7e;
+  --warn-bg:    #fff8e1;
+  --warn-bd:    #f0b429;
+  --note-bg:    #e8f4fd;
+  --note-bd:    #0d6efd;
+  --imp-bg:     #fdecea;
+  --imp-bd:     #d32f2f;
+  --tip-bg:     #e8f5e9;
+  --tip-bd:     #2e7d32;
+  --font:       'Segoe UI', Arial, sans-serif;
+  --mono:       'Consolas', 'Courier New', monospace;
+}
+
+html { font-size: 15px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── Top Banner ── */
+.top-banner {
+  background: var(--primary);
+  color: #fff;
+  padding: 0 24px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+.top-banner .brand { font-size: 1.1rem; font-weight: 700; letter-spacing: .3px; }
+.top-banner .brand span { color: #90caf9; }
+.top-banner .badge {
+  font-size: .7rem;
+  background: #0d6efd;
+  border-radius: 3px;
+  padding: 2px 8px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* ── Layout ── */
+.layout { display: flex; flex: 1; }
+
+/* ── Sidebar ── */
+nav.sidebar {
+  width: 256px;
+  min-width: 256px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 20px 0 40px;
+  position: sticky;
+  top: 52px;
+  height: calc(100vh - 52px);
+  overflow-y: auto;
+}
+nav.sidebar .nav-section {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  padding: 18px 20px 6px;
+}
+nav.sidebar a {
+  display: block;
+  padding: 7px 20px 7px 28px;
+  font-size: .88rem;
+  color: var(--text);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background .15s, border-color .15s;
+}
+nav.sidebar a:hover { background: #e2e8f2; border-left-color: var(--accent); }
+nav.sidebar a.active { background: var(--accent-lt); border-left-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+/* ── Main Content ── */
+.content {
+  flex: 1;
+  padding: 36px 48px 60px;
+  max-width: 960px;
+}
+
+/* ── Page Header ── */
+.page-header {
+  padding-bottom: 18px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 28px;
+}
+.page-header .breadcrumb {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.page-header .breadcrumb a { color: var(--accent); text-decoration: none; }
+.page-header h1 { font-size: 1.75rem; color: var(--primary); font-weight: 700; }
+.page-header .subtitle { font-size: .95rem; color: var(--muted); margin-top: 6px; }
+
+/* ── Headings ── */
+h2 { font-size: 1.2rem; color: var(--primary); margin: 32px 0 10px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1rem; color: var(--primary); margin: 22px 0 8px; }
+
+p { line-height: 1.7; margin-bottom: 12px; }
+ul, ol { margin: 8px 0 14px 22px; line-height: 1.75; }
+li { margin-bottom: 3px; }
+code { font-family: var(--mono); font-size: .84rem; background: #f0f2f5; padding: 1px 5px; border-radius: 3px; }
+pre { background: #1e2a3a; color: #e2e8f0; padding: 16px; border-radius: 6px; overflow-x: auto; font-size: .83rem; margin: 14px 0; }
+
+/* ── Tables ── */
+.tbl-wrap { overflow-x: auto; margin: 16px 0 24px; }
+table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+thead tr { background: var(--primary); color: #fff; }
+thead th { padding: 10px 14px; text-align: left; font-weight: 600; white-space: nowrap; }
+tbody tr:nth-child(even) { background: #f7f9fc; }
+tbody tr:hover { background: var(--accent-lt); }
+tbody td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+
+/* ── Admonitions ── */
+.admonition {
+  border-left: 4px solid;
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 18px 0;
+  font-size: .9rem;
+}
+.admonition .adm-title { font-weight: 700; font-size: .82rem; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+.note  { background: var(--note-bg); border-color: var(--note-bd); }
+.note  .adm-title { color: var(--accent); }
+.warn  { background: var(--warn-bg); border-color: var(--warn-bd); }
+.warn  .adm-title { color: #b45309; }
+.imp   { background: var(--imp-bg);  border-color: var(--imp-bd); }
+.imp   .adm-title { color: #d32f2f; }
+.tip   { background: var(--tip-bg);  border-color: var(--tip-bd); }
+.tip   .adm-title { color: #2e7d32; }
+
+/* ── Info Cards (landing page) ── */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+.card {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 6px;
+  padding: 18px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow .2s, border-top-color .2s;
+}
+.card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.1); border-top-color: var(--primary); }
+.card .card-icon { font-size: 1.4rem; margin-bottom: 8px; }
+.card .card-title { font-weight: 700; font-size: .95rem; color: var(--primary); margin-bottom: 4px; }
+.card .card-desc { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+
+/* ── Status Badges ── */
+.tag {
+  display: inline-block;
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.tag-req   { background: #d32f2f; color: #fff; }
+.tag-opt   { background: #0d6efd; color: #fff; }
+.tag-rec   { background: #2e7d32; color: #fff; }
+.tag-dep   { background: #f0b429; color: #1c2533; }
+.tag-fed   { background: #1a3a5c; color: #fff; }
+.tag-state { background: #5a6a7e; color: #fff; }
+
+/* ── Footer ── */
+footer {
+  background: var(--primary);
+  color: #90caf9;
+  font-size: .78rem;
+  padding: 14px 24px;
+  text-align: center;
+  letter-spacing: .3px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .layout { flex-direction: column; }
+  nav.sidebar { width: 100%; min-width: unset; position: static; height: auto; }
+  .content { padding: 20px 18px 40px; }
+}

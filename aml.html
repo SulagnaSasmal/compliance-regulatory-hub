@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anti-Money Laundering (AML) — Compliance & Regulatory Hub</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<header class="top-banner">
+  <div class="brand">Compliance &amp; <span>Regulatory Hub</span></div>
+  <span class="badge">Internal Use Only</span>
+</header>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Getting Started</div>
+    <a href="index.html">Overview &amp; Framework</a>
+
+    <div class="nav-section">Core Programs</div>
+    <a href="kyc.html">Know Your Customer (KYC)</a>
+    <a href="aml.html" class="active">Anti-Money Laundering (AML)</a>
+    <a href="bsa.html">Bank Secrecy Act (BSA)</a>
+    <a href="cdd.html">Customer Due Diligence (CDD/EDD)</a>
+
+    <div class="nav-section">Screening &amp; Reporting</div>
+    <a href="sanctions.html">OFAC Sanctions Screening</a>
+    <a href="reporting.html">Regulatory Reporting</a>
+
+    <div class="nav-section">Governance</div>
+    <a href="audit.html">Audit Trail &amp; Logging</a>
+  </nav>
+
+  <main class="content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="index.html">Compliance &amp; Regulatory Hub</a> › Core Programs</div>
+      <h1>Anti-Money Laundering (AML)</h1>
+      <div class="subtitle">AML program structure, typologies, transaction monitoring rules, and alert management.</div>
+    </div>
+
+    <div class="admonition imp">
+      <div class="adm-title">Legal Basis</div>
+      The AML program is required under the Bank Secrecy Act (31 USC 5318(h)). Willful failure to maintain an adequate AML program is a criminal offense under 31 USC 5322, punishable by up to 5 years imprisonment and penalties up to $250,000 per violation.
+    </div>
+
+    <h2>The Three Stages of Money Laundering</h2>
+    <p>Understanding the laundering cycle is foundational to detection. All three stages must be covered by monitoring controls:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Description</th><th>Common Indicators</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Placement</strong></td>
+            <td>Introduction of illicit cash into the financial system</td>
+            <td>Structured cash deposits, round-amount transactions, unusual cash intensity</td>
+          </tr>
+          <tr>
+            <td><strong>Layering</strong></td>
+            <td>Concealing the trail through complex transactions</td>
+            <td>Rapid fund transfers, shell company activity, wire layering, crypto conversion</td>
+          </tr>
+          <tr>
+            <td><strong>Integration</strong></td>
+            <td>Reintroduction of laundered funds into the legitimate economy</td>
+            <td>Real estate purchases, luxury asset acquisition, loan-back schemes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Transaction Monitoring System (TMS)</h2>
+    <p>The organization's Transaction Monitoring System (TMS) applies rule-based and machine learning detection to identify potentially suspicious activity. Alerts are generated when transaction patterns breach defined thresholds or behavioral models flag anomalies.</p>
+
+    <h3>Core Monitoring Rules</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Rule Name</th><th>Trigger Condition</th><th>Lookback Window</th><th>Priority</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Structuring Detection</td><td>Multiple cash transactions &lt;$10,000 summing to ≥$10,000</td><td>30 days</td><td><span class="tag tag-req">High</span></td></tr>
+          <tr><td>Rapid Movement</td><td>Funds deposited and withdrawn within 24 hours ≥$5,000</td><td>7 days</td><td><span class="tag tag-req">High</span></td></tr>
+          <tr><td>High-Risk Geography Wire</td><td>Outbound international wire to FATF grey/black list country</td><td>Per transaction</td><td><span class="tag tag-req">High</span></td></tr>
+          <tr><td>Round Dollar Wires</td><td>Three or more round-dollar wires in 7 days</td><td>7 days</td><td><span class="tag tag-dep">Medium</span></td></tr>
+          <tr><td>Dormant Account Spike</td><td>Dormant account (&gt;180 days) receives/sends funds &gt;$2,500</td><td>180 days dormancy</td><td><span class="tag tag-dep">Medium</span></td></tr>
+          <tr><td>PEP Transaction Monitoring</td><td>Any transaction by a designated PEP customer</td><td>Continuous</td><td><span class="tag tag-req">High</span></td></tr>
+          <tr><td>Velocity — Peer Outlier</td><td>Customer transaction volume 3× above peer segment average</td><td>90 days</td><td><span class="tag tag-dep">Medium</span></td></tr>
+          <tr><td>Crypto On-Ramp/Off-Ramp</td><td>Funds sent to or received from crypto exchange ≥$1,000</td><td>Per transaction</td><td><span class="tag tag-dep">Medium</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="admonition note">
+      <div class="adm-title">Rule Tuning</div>
+      All TMS rules must be reviewed semi-annually. Threshold changes require written justification, back-testing evidence, and sign-off by the BSA Officer. Rule suppressions exceeding 30 days require Compliance Committee approval.
+    </div>
+
+    <h2>AML Typologies Reference</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Typology</th><th>Description</th><th>Red Flags</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Trade-Based ML (TBML)</td><td>Over/under-invoicing of goods to move value across borders</td><td>Invoice discrepancies, dual invoicing, unusual trade partners</td></tr>
+          <tr><td>Loan-Back Scheme</td><td>Criminal obtains a loan from a bank using illicitly placed deposits as collateral</td><td>Self-collateralized loans, rapid payoff, no apparent business purpose</td></tr>
+          <tr><td>Shell Company Layering</td><td>Funds routed through multiple legal entities with no real business activity</td><td>No employees, no revenue, frequent intra-company transfers</td></tr>
+          <tr><td>Real Estate ML</td><td>Purchasing property with illicit funds, often using all-cash transactions</td><td>All-cash purchases, third-party payments, rapid resale</td></tr>
+          <tr><td>Human Trafficking Proceeds</td><td>Revenue from forced labor or commercial sex exploitation</td><td>Multiple third-party deposits, frequent hotel/motel payments, multiple accounts same address</td></tr>
+          <tr><td>Cyber-Enabled Fraud</td><td>BEC, romance scam, or account takeover proceeds laundered via wire transfers</td><td>Sudden large wires to unknown beneficiaries, victim profile mismatch</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Alert Disposition Workflow</h2>
+    <p>All TMS alerts follow a standardized disposition process:</p>
+    <ol>
+      <li><strong>Alert Generation</strong> — TMS creates an alert based on rule or model trigger.</li>
+      <li><strong>L1 Review (Analyst)</strong> — Analyst reviews within 5 business days. Dispositions: Close (no suspicious activity), Escalate, or Request Additional Information.</li>
+      <li><strong>L2 Review (Senior Analyst)</strong> — Escalated alerts reviewed within 5 business days. Dispositions: Close with documentation, Escalate to L3, or File SAR.</li>
+      <li><strong>L3 Review (Compliance Officer)</strong> — Final disposition for complex cases. SAR filing decision made here.</li>
+      <li><strong>SAR Filing</strong> — Filed within 30 calendar days of initial detection of suspicious activity. 90-day extension available with documentation.</li>
+    </ol>
+
+    <div class="admonition warn">
+      <div class="adm-title">Tipping Off Prohibition</div>
+      Federal law (31 USC 5318(g)(2)) prohibits disclosing to any person involved in a SAR-reported transaction that a SAR has been filed or is being considered. Violation is a criminal offense.
+    </div>
+
+    <h2>AML Training Requirements</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Employee Group</th><th>Training Type</th><th>Frequency</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>All employees</td><td>AML Awareness (general red flags, reporting obligations)</td><td>Annual</td></tr>
+          <tr><td>Compliance / AML Analysts</td><td>Typology deep-dive, TMS operation, SAR writing</td><td>Annual + ad hoc</td></tr>
+          <tr><td>Customer-facing staff</td><td>Red flag identification, escalation procedures</td><td>Annual + new hire</td></tr>
+          <tr><td>BSA Officer</td><td>Regulatory updates, FFIEC guidance, industry forums</td><td>Continuous</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  Compliance &amp; Regulatory Hub &mdash; Internal Use Only &mdash; Not for External Distribution
+</footer>
+
+</body>
+</html>
