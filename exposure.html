@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Exposure &amp; Concentration — Asset Arena Compliance Framework</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header class="top-banner">
+  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <span class="badge">Internal Use Only</span>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Getting Started</div>
+    <a href="index.html">Overview &amp; Framework</a>
+    <div class="nav-section">Compliance Engine</div>
+    <a href="pre-trade.html">Pre-Trade Compliance</a>
+    <a href="post-trade.html">Post-Trade Monitoring</a>
+    <a href="mandates.html">Investment Mandates</a>
+    <div class="nav-section">Risk &amp; Limits</div>
+    <a href="exposure.html" class="active">Exposure &amp; Concentration</a>
+    <a href="regulatory.html">Regulatory Reporting</a>
+    <div class="nav-section">Governance</div>
+    <a href="breach.html">Breach Management</a>
+    <a href="audit.html">Audit Trail &amp; Logging</a>
+  </nav>
+  <main class="content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Risk &amp; Limits</div>
+      <h1>Exposure &amp; Concentration Limits</h1>
+      <div class="subtitle">Sector, country, currency, issuer, and counterparty exposure calculations with lookthrough, netting, and stress testing.</div>
+    </div>
+    <div class="admonition imp">
+      <div class="adm-title">Exposure Engine</div>
+      Asset Arena's exposure calculator runs in two modes: <strong>real-time</strong> (for pre-trade what-if analysis using Oracle Coherence cached data) and <strong>batch</strong> (for post-trade compliance using official NAV positions from Oracle RAC). Both modes use the same calculation logic to ensure consistency.
+    </div>
+    <h2>Exposure Dimensions</h2>
+    <p>The compliance engine calculates portfolio exposure across multiple dimensions. Each dimension can be used as the basis for compliance rules and limits.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Dimension</th><th>Calculation Basis</th><th>Common Limit Types</th></tr></thead>
+        <tbody>
+          <tr><td>Issuer</td><td>Aggregate market value of all positions in securities issued by the same legal entity (including subsidiaries via issuer grouping)</td><td>UCITS 5/10/40; max single issuer %</td></tr>
+          <tr><td>Sector (GICS)</td><td>Market value weight per GICS sector/industry group, sourced from Bloomberg classification</td><td>Max sector weight; relative-to-benchmark band</td></tr>
+          <tr><td>Country</td><td>Country of risk (not domicile) based on Bloomberg COUNTRY_OF_RISK field</td><td>Max single country; max emerging markets</td></tr>
+          <tr><td>Currency</td><td>Net exposure per currency after hedging overlay; split into hedged and unhedged components</td><td>Max unhedged non-base currency exposure</td></tr>
+          <tr><td>Credit Rating</td><td>Weighted average credit rating using middle-of-three (Moody's, S&amp;P, Fitch); individual position rating floors</td><td>Min avg rating; max % below investment grade</td></tr>
+          <tr><td>Asset Class</td><td>Broad classification: equities, fixed income, alternatives, cash, derivatives</td><td>Min/max asset class allocation bands</td></tr>
+          <tr><td>Counterparty</td><td>Net mark-to-market exposure to OTC derivative counterparties after netting and collateral</td><td>Max counterparty exposure (UCITS Art. 52)</td></tr>
+          <tr><td>Liquidity</td><td>Time-to-liquidate classification based on average daily volume and position size</td><td>Min % liquidatable within N days</td></tr>
+          <tr><td>Duration / DV01</td><td>Effective duration and dollar value of a basis point for fixed income portfolios</td><td>Duration band; max DV01</td></tr>
+          <tr><td>Maturity Bucket</td><td>Fixed income positions grouped by remaining maturity (0-1Y, 1-3Y, 3-5Y, 5-10Y, 10Y+)</td><td>Max % in maturity bucket</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>UCITS Concentration Rules (5/10/40)</h2>
+    <p>For UCITS-regulated funds, Asset Arena enforces the issuer concentration limits defined in UCITS Directive Article 52:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Rule</th><th>Limit</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td>5% Rule</td><td>Max 5% NAV in any single issuer</td><td>Default maximum exposure to any single issuer's transferable securities</td></tr>
+          <tr><td>10% Exception</td><td>Max 10% NAV in a single issuer (with conditions)</td><td>Up to 10% allowed for select issuers, provided total of all 5-10% positions does not exceed 40% NAV</td></tr>
+          <tr><td>40% Aggregate Cap</td><td>Max 40% NAV in issuers where exposure exceeds 5%</td><td>Sum of all positions exceeding 5% in a single issuer must not exceed 40% of fund NAV</td></tr>
+          <tr><td>20% Group Limit</td><td>Max 20% NAV in a single group of connected issuers</td><td>Aggregate exposure to entities within the same corporate group</td></tr>
+          <tr><td>35% Government Exception</td><td>Max 35% in government/public issuer (extendable to 100%)</td><td>Government bonds may exceed 5% limit; 100% allowed if from 6+ different issues</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Lookthrough Calculation</h2>
+    <p>When a fund holds units in other collective investment schemes (fund-of-funds) or structured products, Asset Arena performs lookthrough analysis to calculate the true underlying exposures:</p>
+    <ul>
+      <li><strong>Fund-of-funds</strong>: Underlying fund holdings are decomposed to calculate issuer, sector, and country exposures at the security level.</li>
+      <li><strong>ETFs</strong>: Index composition is used as a proxy when full holdings are not available; refreshed daily from fund administrator feeds.</li>
+      <li><strong>Structured products</strong>: Underlying reference assets are identified for concentration and credit quality checks.</li>
+      <li><strong>Derivatives</strong>: Notional exposure and delta-adjusted exposure are calculated for the underlying reference instrument.</li>
+    </ul>
+    <div class="admonition note">
+      <div class="adm-title">Lookthrough Depth</div>
+      Asset Arena supports configurable lookthrough depth (1 level, 2 levels, or full recursive). For UCITS funds, at least one level of lookthrough is required for fund-of-fund holdings. Deeper lookthrough increases computation time but provides more accurate concentration measurement.
+    </div>
+    <h2>Derivative Exposure Calculation</h2>
+    <p>Asset Arena supports two methods for calculating global derivative exposure as required by UCITS:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Method</th><th>Applicability</th><th>Calculation</th></tr></thead>
+        <tbody>
+          <tr><td>Commitment Approach</td><td>Funds with simple derivative usage (hedging, efficient portfolio management)</td><td>Convert each derivative to equivalent position in underlying; apply netting and hedging rules per CESR/10-788</td></tr>
+          <tr><td>VaR Approach (Relative)</td><td>Funds with complex derivative strategies</td><td>99% / 20-day VaR of fund must not exceed 2x VaR of derivative-free reference portfolio</td></tr>
+          <tr><td>VaR Approach (Absolute)</td><td>Funds without a suitable reference portfolio</td><td>99% / 20-day VaR must not exceed 20% of fund NAV</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Stress Testing</h2>
+    <p>Asset Arena integrates stress testing with compliance monitoring to assess how portfolios behave under adverse scenarios:</p>
+    <ul>
+      <li><strong>Historical scenarios</strong>: Replay market conditions from specific dates (e.g., 2008 GFC, 2020 COVID, 2022 rate shock) against current portfolio.</li>
+      <li><strong>Hypothetical scenarios</strong>: User-defined shocks to interest rates, equity markets, credit spreads, or FX rates applied simultaneously.</li>
+      <li><strong>Compliance impact</strong>: After applying stress scenario, all compliance rules are re-evaluated to identify rules that would breach under stress.</li>
+      <li><strong>Reporting</strong>: Stress test results are included in AIFMD Annex IV reporting and internal risk committee reports.</li>
+    </ul>
+    <div class="admonition warn">
+      <div class="adm-title">Counterparty Exposure Netting</div>
+      OTC derivative counterparty exposure calculations apply netting only where a valid ISDA Master Agreement and Credit Support Annex (CSA) are documented in Asset Arena. Without a confirmed netting agreement, gross positive exposure is used for compliance limit checks.
+    </div>
+    <div class="admonition tip">
+      <div class="adm-title">Exposure Dashboard</div>
+      The AAIM compliance dashboard provides a real-time heat map of exposure concentrations across all dimensions. Cells approaching 80% of their limit threshold are highlighted amber; cells exceeding 90% are highlighted red. This gives portfolio managers early warning before breaching limits.
+    </div>
+  </main>
+</div>
+<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+</body>
+</html>

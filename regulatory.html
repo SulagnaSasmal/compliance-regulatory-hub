@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Regulatory Reporting — Asset Arena Compliance Framework</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header class="top-banner">
+  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <span class="badge">Internal Use Only</span>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Getting Started</div>
+    <a href="index.html">Overview &amp; Framework</a>
+    <div class="nav-section">Compliance Engine</div>
+    <a href="pre-trade.html">Pre-Trade Compliance</a>
+    <a href="post-trade.html">Post-Trade Monitoring</a>
+    <a href="mandates.html">Investment Mandates</a>
+    <div class="nav-section">Risk &amp; Limits</div>
+    <a href="exposure.html">Exposure &amp; Concentration</a>
+    <a href="regulatory.html" class="active">Regulatory Reporting</a>
+    <div class="nav-section">Governance</div>
+    <a href="breach.html">Breach Management</a>
+    <a href="audit.html">Audit Trail &amp; Logging</a>
+  </nav>
+  <main class="content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Risk &amp; Limits</div>
+      <h1>Regulatory Reporting</h1>
+      <div class="subtitle">UCITS reporting, AIFMD Annex IV, Form PF, MiFID II transaction reporting, Solvency II Pillar 3, and EMIR derivative reporting.</div>
+    </div>
+    <div class="admonition note">
+      <div class="adm-title">Report Generation</div>
+      Asset Arena's regulatory report generator extracts data from Oracle RAC position and transaction tables, applies regulatory calculation rules, formats output per regulator specifications, and delivers reports via SWIFT, secure file transfer, or regulator portals. All generated reports are archived with full audit trail.
+    </div>
+    <h2>Supported Regulatory Reports</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Report</th><th>Regulation</th><th>Frequency</th><th>Filing Method</th><th>Jurisdiction</th></tr></thead>
+        <tbody>
+          <tr><td>UCITS KIID / KID (PRIIPs)</td><td>UCITS IV / PRIIPs Regulation</td><td>Annual + ad-hoc on material change</td><td>Fund distributor portal / regulatory repository</td><td>EU</td></tr>
+          <tr><td>UCITS Risk Report</td><td>UCITS Directive Art. 51</td><td>Semi-annual</td><td>Management company to regulator</td><td>EU</td></tr>
+          <tr><td>AIFMD Annex IV</td><td>AIFMD (2011/61/EU) Art. 24</td><td>Quarterly (large AIFs) / Semi-annual (small)</td><td>XML via national regulator portal (e.g., CSSF eDesk)</td><td>EU</td></tr>
+          <tr><td>MiFID II Transaction Report</td><td>MiFIR Art. 26, RTS 25</td><td>T+1 (next business day)</td><td>XML via ARM (Approved Reporting Mechanism)</td><td>EU</td></tr>
+          <tr><td>Form PF</td><td>SEC / CFTC (Dodd-Frank)</td><td>Quarterly (large advisers) / Annual (small)</td><td>EDGAR / PFRD filing system</td><td>US</td></tr>
+          <tr><td>Form N-PORT</td><td>SEC Investment Company Act</td><td>Monthly filing; quarterly public</td><td>EDGAR XML filing</td><td>US</td></tr>
+          <tr><td>Solvency II QRT (Pillar 3)</td><td>Solvency II Directive</td><td>Quarterly</td><td>XBRL via national supervisor portal</td><td>EU</td></tr>
+          <tr><td>CPO-PQR</td><td>CFTC Regulation 4.27</td><td>Quarterly</td><td>NFA EasyFile</td><td>US</td></tr>
+          <tr><td>EMIR Trade Report</td><td>EMIR Art. 9</td><td>T+1</td><td>XML via Trade Repository (DTCC, Regis-TR)</td><td>EU</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>AIFMD Annex IV Reporting</h2>
+    <p>Asset Arena generates the full AIFMD Annex IV XML report covering:</p>
+    <ul>
+      <li><strong>Fund identification</strong>: LEI, fund name, domicile, AIF type, investment strategy code</li>
+      <li><strong>NAV and AUM</strong>: Reported at fund level and aggregated at AIFM level</li>
+      <li><strong>Instrument breakdown</strong>: Positions categorized by macro asset type, sub-asset type, and geographical focus</li>
+      <li><strong>Principal exposures</strong>: Top 5 portfolio concentrations by value, top 5 markets traded</li>
+      <li><strong>Leverage</strong>: Gross and commitment method leverage ratios</li>
+      <li><strong>Risk profile</strong>: Market risk, counterparty risk, liquidity profile (investor and portfolio side)</li>
+      <li><strong>Stress test results</strong>: Impact of equity, interest rate, FX, and credit stress scenarios</li>
+    </ul>
+    <div class="admonition warn">
+      <div class="adm-title">AIFMD Filing Deadlines</div>
+      Large AIFMs (AUM &gt; EUR 1bn) must file Annex IV quarterly within 30 days of quarter-end. Small AIFMs file semi-annually within 30 days. Late filing triggers regulatory inquiry and potential sanctions. Asset Arena includes a filing deadline calendar with automated reminders at T-14 and T-7 days.
+    </div>
+    <h2>MiFID II Transaction Reporting (RTS 25)</h2>
+    <p>Asset Arena generates MiFID II transaction reports for all reportable instruments traded by the investment manager:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Field Category</th><th>Key Fields</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Buyer / Seller</td><td>LEI, national ID, decision maker, execution entity</td><td>Client static data, AAIM user records</td></tr>
+          <tr><td>Instrument</td><td>ISIN, CFI code, underlying ISIN (for derivatives)</td><td>Bloomberg reference data, instrument master</td></tr>
+          <tr><td>Transaction</td><td>Price, quantity, venue (MIC), execution timestamp, trade venue transaction ID</td><td>FIX execution reports, OMS</td></tr>
+          <tr><td>Transmission</td><td>Transmitting firm LEI, receiving firm LEI</td><td>Broker static data</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Reports are transmitted to the national competent authority via an Approved Reporting Mechanism (ARM) by T+1 close of business. Asset Arena supports direct ARM connectivity or delegation to the executing broker.</p>
+    <h2>Form PF Reporting</h2>
+    <p>For US-registered investment advisers with private fund AUM exceeding USD 150 million, Asset Arena generates Form PF data covering:</p>
+    <ul>
+      <li>Basic fund information and AUM</li>
+      <li>Borrowings and types of creditors</li>
+      <li>Derivative positions by asset class and counterparty</li>
+      <li>Portfolio turnover and liquidity profile</li>
+      <li>Investment performance (gross and net) by period</li>
+      <li>Investor concentration and redemption terms</li>
+      <li>Risk metrics: VaR, portfolio duration, leverage</li>
+    </ul>
+    <h2>Solvency II Lookthrough (Pillar 3)</h2>
+    <p>Insurance company clients require lookthrough reporting on their asset portfolios for Solvency II Pillar 3 Quantitative Reporting Templates (QRTs). Asset Arena generates:</p>
+    <ul>
+      <li><strong>S.06.02</strong>: List of assets (line-by-line position detail with CIC codes)</li>
+      <li><strong>S.06.03</strong>: Collective investment undertakings - lookthrough</li>
+      <li><strong>S.08.01</strong>: Open derivatives (position detail)</li>
+      <li><strong>S.08.02</strong>: Derivative transactions during the period</li>
+    </ul>
+    <div class="admonition tip">
+      <div class="adm-title">Report Reconciliation</div>
+      Before filing, Asset Arena performs automated reconciliation between the regulatory report data and the official fund accounting records. Discrepancies above a configurable threshold trigger a reconciliation break that must be resolved before the report can be submitted.
+    </div>
+    <h2>Report Archive &amp; Audit</h2>
+    <p>All generated regulatory reports are archived in Asset Arena with:</p>
+    <ul>
+      <li>Full report content (XML, XBRL, or PDF as applicable)</li>
+      <li>Generation timestamp and user who triggered the report</li>
+      <li>Review and approval chain (4-eye for regulatory filings)</li>
+      <li>Filing confirmation and regulator acknowledgment reference</li>
+      <li>Any amendments filed and the reason for amendment</li>
+    </ul>
+  </main>
+</div>
+<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+</body>
+</html>

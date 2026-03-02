@@ -3,150 +3,86 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Compliance & Regulatory Hub — Overview</title>
+<title>Asset Arena Compliance Framework — Overview</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-
 <header class="top-banner">
-  <div class="brand">Compliance &amp; <span>Regulatory Hub</span></div>
+  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
-
 <div class="layout">
   <nav class="sidebar">
     <div class="nav-section">Getting Started</div>
     <a href="index.html" class="active">Overview &amp; Framework</a>
-
-    <div class="nav-section">Core Programs</div>
-    <a href="kyc.html">Know Your Customer (KYC)</a>
-    <a href="aml.html">Anti-Money Laundering (AML)</a>
-    <a href="bsa.html">Bank Secrecy Act (BSA)</a>
-    <a href="cdd.html">Customer Due Diligence (CDD/EDD)</a>
-
-    <div class="nav-section">Screening &amp; Reporting</div>
-    <a href="sanctions.html">OFAC Sanctions Screening</a>
-    <a href="reporting.html">Regulatory Reporting</a>
-
+    <div class="nav-section">Compliance Engine</div>
+    <a href="pre-trade.html">Pre-Trade Compliance</a>
+    <a href="post-trade.html">Post-Trade Monitoring</a>
+    <a href="mandates.html">Investment Mandates</a>
+    <div class="nav-section">Risk &amp; Limits</div>
+    <a href="exposure.html">Exposure &amp; Concentration</a>
+    <a href="regulatory.html">Regulatory Reporting</a>
     <div class="nav-section">Governance</div>
+    <a href="breach.html">Breach Management</a>
     <a href="audit.html">Audit Trail &amp; Logging</a>
   </nav>
-
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb">Compliance &amp; Regulatory Hub</div>
+      <div class="breadcrumb">Asset Arena Compliance Framework</div>
       <h1>Overview &amp; Compliance Framework</h1>
-      <div class="subtitle">Enterprise reference for regulatory obligations, program structure, and compliance operations.</div>
+      <div class="subtitle">Investment compliance engine for SunGard Asset Arena Manager — pre-trade, post-trade, mandate monitoring, and regulatory reporting.</div>
     </div>
-
     <div class="admonition note">
       <div class="adm-title">Scope</div>
-      This documentation applies to all regulated financial products and services. All personnel with compliance obligations must adhere to the policies described herein. Regulatory requirements referenced reflect U.S. federal standards as of the document revision date.
+      This documentation covers the investment compliance capabilities of Asset Arena Manager (FIS). It applies to all fund structures managed on the platform — UCITS, AIFMD, SEC-registered, and unregulated vehicles. It does not cover AML/KYC or financial crime compliance.
     </div>
-
-    <h2>Program Overview</h2>
-    <p>The Compliance &amp; Regulatory Hub provides centralized reference documentation for the organization's financial crime compliance program. It covers applicable U.S. federal regulations, internal program controls, operational procedures, and governance requirements.</p>
-    <p>The compliance program is structured around four pillars: <strong>Know Your Customer (KYC)</strong>, <strong>Anti-Money Laundering (AML)</strong>, <strong>Sanctions Screening</strong>, and <strong>Regulatory Reporting</strong>. Each pillar has dedicated policies, procedures, and system controls described in the sections of this hub.</p>
-
-    <h2>Regulatory Framework</h2>
-    <p>The organization's compliance obligations are governed by the following primary regulatory authorities and frameworks:</p>
+    <h2>Compliance Engine Overview</h2>
+    <p>Asset Arena Manager includes a built-in compliance engine that evaluates investment guidelines at two critical points: <strong>pre-trade</strong> (before order execution) and <strong>post-trade</strong> (after settlement and on a scheduled basis). The engine supports rule-based compliance checking against client mandates, fund prospectus limits, and regulatory requirements.</p>
+    <h2>Compliance Framework Architecture</h2>
     <div class="tbl-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Regulation / Authority</th>
-            <th>Governing Body</th>
-            <th>Primary Obligation</th>
-            <th>Applicability</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Component</th><th>Function</th><th>Trigger</th></tr></thead>
         <tbody>
-          <tr><td>Bank Secrecy Act (BSA)</td><td>FinCEN / Treasury</td><td>AML program, recordkeeping, reporting</td><td><span class="tag tag-req">Required</span></td></tr>
-          <tr><td>USA PATRIOT Act (31 USC 5318)</td><td>FinCEN</td><td>Customer Identification Program (CIP)</td><td><span class="tag tag-req">Required</span></td></tr>
-          <tr><td>OFAC Regulations</td><td>OFAC / Treasury</td><td>Sanctions screening &amp; blocking</td><td><span class="tag tag-req">Required</span></td></tr>
-          <tr><td>FinCEN CDD Rule (2018)</td><td>FinCEN</td><td>Beneficial ownership, risk-based CDD</td><td><span class="tag tag-req">Required</span></td></tr>
-          <tr><td>FFIEC BSA/AML Examination Manual</td><td>FFIEC</td><td>Examination expectations &amp; guidance</td><td><span class="tag tag-rec">Reference</span></td></tr>
-          <tr><td>FATF Recommendations</td><td>FATF</td><td>International AML/CFT standards</td><td><span class="tag tag-rec">Reference</span></td></tr>
-          <tr><td>State Money Transmitter Laws</td><td>State Regulators</td><td>Licensing &amp; state-level compliance</td><td><span class="tag tag-state">State-specific</span></td></tr>
+          <tr><td>Pre-Trade Compliance Engine</td><td>Evaluates proposed orders against investment guidelines before execution</td><td>Order submission via AAIM</td></tr>
+          <tr><td>Post-Trade Compliance Monitor</td><td>Checks portfolio positions against mandates after settlement</td><td>Scheduled (daily) + event-driven</td></tr>
+          <tr><td>Mandate Rule Library</td><td>Configurable rule definitions (limits, restrictions, eligibility)</td><td>Fund onboarding / mandate change</td></tr>
+          <tr><td>Exposure Calculator</td><td>Real-time and batch exposure computation (sector, country, currency, issuer)</td><td>Position change / pricing update</td></tr>
+          <tr><td>Breach Manager</td><td>Breach detection, classification, escalation, and remediation tracking</td><td>Compliance rule violation detected</td></tr>
+          <tr><td>Regulatory Report Generator</td><td>UCITS, AIFMD, Form PF, MiFID II transaction reporting</td><td>Scheduled (periodic) / on-demand</td></tr>
         </tbody>
       </table>
     </div>
-
-    <h2>Compliance Program Components</h2>
-    <p>A compliant BSA/AML program must include the following five pillars as required by FinCEN:</p>
-    <ol>
-      <li><strong>Internal policies, procedures, and controls</strong> — Written policies governing AML, KYC, sanctions, and reporting obligations.</li>
-      <li><strong>Designation of a BSA/AML Compliance Officer</strong> — A qualified individual with authority and resources to administer the program.</li>
-      <li><strong>Ongoing employee training</strong> — Role-based training on AML typologies, red flags, escalation procedures, and regulatory requirements.</li>
-      <li><strong>Independent testing (audit)</strong> — Periodic independent review of the compliance program's effectiveness.</li>
-      <li><strong>Customer Due Diligence (CDD)</strong> — Risk-based identification, verification, and ongoing monitoring of customers, including beneficial ownership.</li>
-    </ol>
-
-    <div class="admonition warn">
-      <div class="adm-title">Program Review Cadence</div>
-      Compliance policies and procedures must be reviewed at minimum annually, or upon material regulatory changes, new product launches, or significant operational changes.
+    <h2>Supported Regulatory Frameworks</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Framework</th><th>Jurisdiction</th><th>Applicability</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>UCITS (2009/65/EC)</td><td>EU</td><td>EU-domiciled UCITS funds</td><td><span class="tag tag-req">Supported</span></td></tr>
+          <tr><td>AIFMD (2011/61/EU)</td><td>EU</td><td>Alternative investment funds</td><td><span class="tag tag-req">Supported</span></td></tr>
+          <tr><td>MiFID II / MiFIR</td><td>EU</td><td>Transaction reporting (RTS 25)</td><td><span class="tag tag-req">Supported</span></td></tr>
+          <tr><td>SEC / ICA (1940 Act)</td><td>US</td><td>US registered investment companies</td><td><span class="tag tag-req">Supported</span></td></tr>
+          <tr><td>Form PF (SEC)</td><td>US</td><td>Private fund advisers &gt;$150M AUM</td><td><span class="tag tag-req">Supported</span></td></tr>
+          <tr><td>Solvency II (Pillar 3)</td><td>EU</td><td>Insurance company asset portfolios</td><td><span class="tag tag-rec">Available</span></td></tr>
+          <tr><td>CPO-PQR (CFTC)</td><td>US</td><td>Commodity pool operators</td><td><span class="tag tag-rec">Available</span></td></tr>
+        </tbody>
+      </table>
     </div>
-
-    <h2>Quick Reference — Documentation Sections</h2>
+    <h2>Documentation Sections</h2>
     <div class="card-grid">
-      <a href="kyc.html" class="card">
-        <div class="card-icon">&#128100;</div>
-        <div class="card-title">Know Your Customer (KYC)</div>
-        <div class="card-desc">CIP requirements, identity verification, and onboarding controls.</div>
-      </a>
-      <a href="aml.html" class="card">
-        <div class="card-icon">&#128274;</div>
-        <div class="card-title">Anti-Money Laundering</div>
-        <div class="card-desc">AML program structure, transaction monitoring, and typologies.</div>
-      </a>
-      <a href="bsa.html" class="card">
-        <div class="card-icon">&#128209;</div>
-        <div class="card-title">Bank Secrecy Act</div>
-        <div class="card-desc">BSA recordkeeping, CTR thresholds, and FinCEN requirements.</div>
-      </a>
-      <a href="cdd.html" class="card">
-        <div class="card-icon">&#128202;</div>
-        <div class="card-title">Customer Due Diligence</div>
-        <div class="card-desc">CDD/EDD risk tiers, beneficial ownership, and periodic review.</div>
-      </a>
-      <a href="sanctions.html" class="card">
-        <div class="card-icon">&#128683;</div>
-        <div class="card-title">OFAC Sanctions</div>
-        <div class="card-desc">SDN screening, blocking obligations, and OFAC reporting.</div>
-      </a>
-      <a href="reporting.html" class="card">
-        <div class="card-icon">&#128196;</div>
-        <div class="card-title">Regulatory Reporting</div>
-        <div class="card-desc">SAR filing standards, CTR procedures, and FinCEN timelines.</div>
-      </a>
-      <a href="audit.html" class="card">
-        <div class="card-icon">&#128269;</div>
-        <div class="card-title">Audit Trail &amp; Logging</div>
-        <div class="card-desc">Recordkeeping requirements, retention schedules, and audit controls.</div>
-      </a>
+      <a href="pre-trade.html" class="card"><div class="card-icon">&#9989;</div><div class="card-title">Pre-Trade Compliance</div><div class="card-desc">Order-level compliance checks, hard/soft breaches, override workflows.</div></a>
+      <a href="post-trade.html" class="card"><div class="card-icon">&#128202;</div><div class="card-title">Post-Trade Monitoring</div><div class="card-desc">Scheduled position checks, passive breach detection, remediation timelines.</div></a>
+      <a href="mandates.html" class="card"><div class="card-icon">&#128220;</div><div class="card-title">Investment Mandates</div><div class="card-desc">IPS modeling, rule inheritance, limit types, exception handling.</div></a>
+      <a href="exposure.html" class="card"><div class="card-icon">&#128200;</div><div class="card-title">Exposure &amp; Concentration</div><div class="card-desc">Sector, country, currency, issuer limits, lookthrough, stress testing.</div></a>
+      <a href="regulatory.html" class="card"><div class="card-icon">&#128196;</div><div class="card-title">Regulatory Reporting</div><div class="card-desc">UCITS, AIFMD Annex IV, Form PF, MiFID II RTS 25.</div></a>
+      <a href="breach.html" class="card"><div class="card-icon">&#9888;</div><div class="card-title">Breach Management</div><div class="card-desc">Breach lifecycle, escalation rules, regulator notifications.</div></a>
+      <a href="audit.html" class="card"><div class="card-icon">&#128269;</div><div class="card-title">Audit Trail</div><div class="card-desc">Compliance decision logging, retention, examination readiness.</div></a>
     </div>
-
-    <h2>Risk-Based Approach</h2>
-    <p>All compliance controls are calibrated using a risk-based approach (RBA) as required by FinCEN and endorsed by FATF. The organization maintains a written <strong>Enterprise Risk Assessment (ERA)</strong> that categorizes compliance risk across:</p>
-    <ul>
-      <li><strong>Products &amp; Services</strong> — Payment rails, account types, digital channels</li>
-      <li><strong>Customer Segments</strong> — Retail, commercial, MSBs, PEPs, high-risk industries</li>
-      <li><strong>Geographies</strong> — High-risk jurisdictions, FATF grey/black list countries</li>
-      <li><strong>Distribution Channels</strong> — Direct, agent, third-party, online</li>
-    </ul>
-    <p>Risk ratings (Low / Medium / High / Prohibited) drive customer due diligence depth, monitoring thresholds, and transaction limits.</p>
-
     <div class="admonition tip">
-      <div class="adm-title">Getting Help</div>
-      For compliance questions, contact the BSA/AML Compliance Officer. For system-related issues with transaction monitoring or screening tools, contact the Compliance Technology team.
+      <div class="adm-title">Getting Started</div>
+      For new fund onboarding, start with <a href="mandates.html">Investment Mandates</a> to configure fund-level compliance rules, then review <a href="pre-trade.html">Pre-Trade Compliance</a> for order-level setup.
     </div>
-
   </main>
 </div>
-
-<footer>
-  Compliance &amp; Regulatory Hub &mdash; Internal Use Only &mdash; Not for External Distribution
-</footer>
-
+<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
 </body>
 </html>

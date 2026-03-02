@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Post-Trade Monitoring — Asset Arena Compliance Framework</title>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<header class="top-banner">
+  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <span class="badge">Internal Use Only</span>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="nav-section">Getting Started</div>
+    <a href="index.html">Overview &amp; Framework</a>
+    <div class="nav-section">Compliance Engine</div>
+    <a href="pre-trade.html">Pre-Trade Compliance</a>
+    <a href="post-trade.html" class="active">Post-Trade Monitoring</a>
+    <a href="mandates.html">Investment Mandates</a>
+    <div class="nav-section">Risk &amp; Limits</div>
+    <a href="exposure.html">Exposure &amp; Concentration</a>
+    <a href="regulatory.html">Regulatory Reporting</a>
+    <div class="nav-section">Governance</div>
+    <a href="breach.html">Breach Management</a>
+    <a href="audit.html">Audit Trail &amp; Logging</a>
+  </nav>
+  <main class="content">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Compliance Engine</div>
+      <h1>Post-Trade Compliance Monitoring</h1>
+      <div class="subtitle">Scheduled and event-driven portfolio compliance checks after trade settlement, corporate actions, and market movements.</div>
+    </div>
+    <div class="admonition note">
+      <div class="adm-title">Active vs. Passive Breaches</div>
+      An <strong>active breach</strong> results from a deliberate trade (e.g., PM overrides a soft limit). A <strong>passive breach</strong> results from external events — market price movements, credit rating downgrades, corporate actions, or investor redemptions changing portfolio weights without any trade.
+    </div>
+    <h2>Post-Trade Compliance Triggers</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Trigger</th><th>Description</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td>Scheduled daily run</td><td>Full compliance re-check of all fund positions after NAV calculation</td><td>Daily (post-NAV batch)</td></tr>
+          <tr><td>Trade settlement</td><td>Compliance re-evaluated when T+n settlement updates positions</td><td>Event-driven</td></tr>
+          <tr><td>Corporate action processing</td><td>Stock splits, mergers, spin-offs may change issuer concentrations</td><td>Event-driven</td></tr>
+          <tr><td>Price movement</td><td>Significant intraday price moves can shift asset allocation weights</td><td>Event-driven (threshold-based)</td></tr>
+          <tr><td>Credit rating change</td><td>Moody's/S&amp;P/Fitch downgrade may breach credit quality floors</td><td>Event-driven (data feed)</td></tr>
+          <tr><td>Investor redemption</td><td>Large redemptions change portfolio weights without trading</td><td>Event-driven</td></tr>
+          <tr><td>Benchmark rebalance</td><td>Benchmark index changes can affect relative-to-benchmark limits</td><td>Quarterly / ad-hoc</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Passive Breach Detection</h2>
+    <p>Passive breaches are detected during the scheduled daily compliance run. Asset Arena compares current portfolio exposures (post-NAV) against all active mandate rules. Breaches caused by market movements or external events are classified as passive and subject to different remediation timelines than active breaches.</p>
+    <h2>Remediation Timelines</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Breach Origin</th><th>Severity</th><th>Remediation Deadline</th><th>Escalation</th></tr></thead>
+        <tbody>
+          <tr><td>Active (PM trade)</td><td>Hard</td><td>Blocked at pre-trade — no remediation needed</td><td>N/A</td></tr>
+          <tr><td>Active (PM override)</td><td>Soft</td><td>5 business days to return within limits</td><td>CCO at day 3</td></tr>
+          <tr><td>Passive (market move)</td><td>Soft</td><td>10 business days to return within limits</td><td>CCO at day 7</td></tr>
+          <tr><td>Passive (credit downgrade)</td><td>Hard</td><td>30 days (regulatory grace period where applicable)</td><td>CCO + board at day 15</td></tr>
+          <tr><td>Passive (corporate action)</td><td>Varies</td><td>Next rebalance window or 10 business days</td><td>PM + compliance review</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Daily Compliance Report</h2>
+    <p>After each scheduled post-trade compliance run, Asset Arena generates a Daily Compliance Status Report containing:</p>
+    <ul>
+      <li>Fund-by-fund summary: total rules checked, passed, breached (active/passive)</li>
+      <li>New breaches detected since prior run</li>
+      <li>Outstanding breaches with aging (days since detection)</li>
+      <li>Breaches approaching remediation deadline</li>
+      <li>Overrides in effect with remaining approval validity</li>
+    </ul>
+    <div class="admonition warn">
+      <div class="adm-title">UCITS Passive Breach Rules</div>
+      Under UCITS regulations, passive breaches of the 5/10/40 issuer concentration rule must be reported to the fund's management company within 1 business day. If the breach is not remedied within a reasonable timeframe, regulators (e.g., CSSF for Luxembourg funds) must be notified. Asset Arena automatically flags UCITS-specific breach reporting obligations.
+    </div>
+    <h2>Integration with Breach Manager</h2>
+    <p>All post-trade breaches are automatically forwarded to the <a href="breach.html">Breach Management</a> module for lifecycle tracking. The breach record includes the triggering event, affected rule, current vs. limit values, and recommended remediation action.</p>
+    <div class="admonition tip">
+      <div class="adm-title">Optimizing Post-Trade Runs</div>
+      For large fund families (500+ funds), post-trade compliance can be partitioned by processing zone. APAC funds are checked immediately after APAC NAV batch; EMEA and Americas follow their respective NAV windows. This prevents compliance bottlenecks during the global EOD cycle.
+    </div>
+  </main>
+</div>
+<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+</body>
+</html>

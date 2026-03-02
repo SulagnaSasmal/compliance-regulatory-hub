@@ -3,172 +3,129 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Audit Trail & Compliance Logging — Compliance & Regulatory Hub</title>
+<title>Audit Trail &amp; Logging — Asset Arena Compliance Framework</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-
 <header class="top-banner">
-  <div class="brand">Compliance &amp; <span>Regulatory Hub</span></div>
+  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
-
 <div class="layout">
   <nav class="sidebar">
     <div class="nav-section">Getting Started</div>
     <a href="index.html">Overview &amp; Framework</a>
-
-    <div class="nav-section">Core Programs</div>
-    <a href="kyc.html">Know Your Customer (KYC)</a>
-    <a href="aml.html">Anti-Money Laundering (AML)</a>
-    <a href="bsa.html">Bank Secrecy Act (BSA)</a>
-    <a href="cdd.html">Customer Due Diligence (CDD/EDD)</a>
-
-    <div class="nav-section">Screening &amp; Reporting</div>
-    <a href="sanctions.html">OFAC Sanctions Screening</a>
-    <a href="reporting.html">Regulatory Reporting</a>
-
+    <div class="nav-section">Compliance Engine</div>
+    <a href="pre-trade.html">Pre-Trade Compliance</a>
+    <a href="post-trade.html">Post-Trade Monitoring</a>
+    <a href="mandates.html">Investment Mandates</a>
+    <div class="nav-section">Risk &amp; Limits</div>
+    <a href="exposure.html">Exposure &amp; Concentration</a>
+    <a href="regulatory.html">Regulatory Reporting</a>
     <div class="nav-section">Governance</div>
+    <a href="breach.html">Breach Management</a>
     <a href="audit.html" class="active">Audit Trail &amp; Logging</a>
   </nav>
-
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb"><a href="index.html">Compliance &amp; Regulatory Hub</a> › Governance</div>
+      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Governance</div>
       <h1>Audit Trail &amp; Compliance Logging</h1>
-      <div class="subtitle">Recordkeeping requirements, audit log standards, retention schedules, access controls, and independent audit procedures.</div>
+      <div class="subtitle">Compliance decision logging, rule evaluation records, override tracking, retention policies, and examination readiness for Asset Arena Manager.</div>
     </div>
-
     <div class="admonition imp">
       <div class="adm-title">Regulatory Basis</div>
-      BSA recordkeeping requirements under 31 CFR 1010.430 require that all required records be maintained in a manner that makes them accessible and retrievable within a reasonable time (generally defined as 72 hours for regulatory examination purposes). Destruction of records subject to a legal hold is a federal obstruction offense.
+      UCITS management companies and AIFMD-regulated managers must maintain records of all compliance monitoring activities, breach events, and remediation actions for a minimum of 5 years (10 years for MiFID II transaction records). Asset Arena's audit trail is designed to meet these requirements with tamper-evident, append-only logging to Oracle RAC audit tables.
     </div>
-
-    <h2>Compliance Recordkeeping Requirements</h2>
-    <p>The following records must be maintained by the compliance program with the specified retention periods and retrieval standards:</p>
-
+    <h2>Audited Compliance Events</h2>
+    <p>The following compliance events are automatically logged to the Asset Arena audit trail:</p>
     <div class="tbl-wrap">
       <table>
-        <thead>
-          <tr><th>Record Category</th><th>Retention Period</th><th>Retrieval Standard</th><th>Storage Method</th></tr>
-        </thead>
+        <thead><tr><th>Event Category</th><th>Events Logged</th><th>Data Captured</th></tr></thead>
         <tbody>
-          <tr><td>Customer Identification (CIP) records</td><td>5 years after account closure</td><td>72 hours</td><td>Encrypted document management system</td></tr>
-          <tr><td>Beneficial ownership certifications</td><td>5 years after account closure</td><td>72 hours</td><td>Encrypted document management system</td></tr>
-          <tr><td>Filed CTRs</td><td>5 years from filing date</td><td>24 hours</td><td>BSA E-Filing archive + internal DMS</td></tr>
-          <tr><td>Filed SARs (and supporting documentation)</td><td>5 years from filing date</td><td>24 hours</td><td>BSA E-Filing archive + internal DMS (access-restricted)</td></tr>
-          <tr><td>Transaction monitoring alerts (all dispositions)</td><td>5 years from alert closure</td><td>72 hours</td><td>TMS / Case Management System</td></tr>
-          <tr><td>OFAC screening results (hits and clears)</td><td>5 years from screening date</td><td>72 hours</td><td>Sanctions screening system + audit log</td></tr>
-          <tr><td>Funds transfer records (≥$3,000)</td><td>5 years from transaction date</td><td>72 hours</td><td>Core banking system / payment archive</td></tr>
-          <tr><td>Monetary instrument sales records</td><td>5 years from transaction date</td><td>72 hours</td><td>Branch system / digital archive</td></tr>
-          <tr><td>Training completion records</td><td>5 years from course completion</td><td>5 business days</td><td>LMS / HR system</td></tr>
-          <tr><td>Independent audit reports</td><td>5 years from audit date</td><td>5 business days</td><td>Board / Audit Committee archive</td></tr>
+          <tr><td>Pre-Trade Compliance</td><td>Every rule evaluation for every order submitted</td><td>Order ID, fund, rule ID, projected exposure, limit value, result (PASS/SOFT_BREACH/HARD_BREACH), timestamp, PM user ID</td></tr>
+          <tr><td>Override Decisions</td><td>Override request, approval, rejection</td><td>Override ID, breach details, PM justification, approver ID, approval/rejection rationale, timestamp</td></tr>
+          <tr><td>Post-Trade Compliance</td><td>Every rule evaluation in daily compliance run</td><td>Run ID, fund, rule ID, actual exposure, limit value, result, breach classification (active/passive), timestamp</td></tr>
+          <tr><td>Breach Lifecycle</td><td>Detection, classification, assignment, remediation updates, resolution, closure</td><td>Breach ID, all stage transitions with timestamps, responsible parties, remediation notes</td></tr>
+          <tr><td>Rule Changes</td><td>Rule creation, modification, activation, deactivation</td><td>Rule ID, version, old/new parameters, change reason, approval chain, effective date</td></tr>
+          <tr><td>Mandate Changes</td><td>Fund rule assignment, inheritance changes, exception grants</td><td>Fund ID, rule set before/after, approver, effective period</td></tr>
+          <tr><td>Regulatory Reports</td><td>Report generation, review, approval, filing, amendment</td><td>Report type, period, generation timestamp, reviewer/approver, filing confirmation</td></tr>
+          <tr><td>System Configuration</td><td>Escalation threshold changes, notification rule changes, user role changes</td><td>Configuration parameter, old/new value, changed by, approval</td></tr>
         </tbody>
       </table>
     </div>
-
-    <h2>Audit Log Standards</h2>
-    <p>All compliance system audit logs must meet the following minimum technical standards:</p>
-
-    <h3>Required Log Fields</h3>
-    <ul>
-      <li><strong>Timestamp</strong> — UTC timestamp with millisecond precision</li>
-      <li><strong>User ID</strong> — Authenticated user or service account identifier</li>
-      <li><strong>Action</strong> — Specific action performed (e.g., VIEW, EDIT, DELETE, APPROVE, FILE, OVERRIDE)</li>
-      <li><strong>Object Type</strong> — Entity type acted upon (e.g., Customer, Alert, SAR, CTR, Sanctions Hit)</li>
-      <li><strong>Object ID</strong> — Unique identifier of the object affected</li>
-      <li><strong>Previous Value</strong> — Where applicable, the value before the change</li>
-      <li><strong>New Value</strong> — Where applicable, the value after the change</li>
-      <li><strong>IP Address / Session ID</strong> — Origin of the action for security correlation</li>
-      <li><strong>Result</strong> — Success or failure status of the action</li>
-    </ul>
-
+    <h2>Audit Log Schema</h2>
+    <p>All compliance audit records are stored in the <code>AA_COMPLIANCE_AUDIT</code> Oracle table with the following structure:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>AUDIT_ID</code></td><td>NUMBER(19)</td><td>Unique audit record identifier (sequence-generated)</td></tr>
+          <tr><td><code>EVENT_TYPE</code></td><td>VARCHAR2(50)</td><td>Event category (PRE_TRADE_CHECK, POST_TRADE_CHECK, OVERRIDE, BREACH_EVENT, RULE_CHANGE, etc.)</td></tr>
+          <tr><td><code>EVENT_TIMESTAMP</code></td><td>TIMESTAMP WITH TIME ZONE</td><td>UTC timestamp with millisecond precision</td></tr>
+          <tr><td><code>FUND_ID</code></td><td>NUMBER(12)</td><td>Fund identifier</td></tr>
+          <tr><td><code>RULE_ID</code></td><td>NUMBER(12)</td><td>Compliance rule identifier (nullable for non-rule events)</td></tr>
+          <tr><td><code>USER_ID</code></td><td>VARCHAR2(50)</td><td>Authenticated user or system service account</td></tr>
+          <tr><td><code>ACTION</code></td><td>VARCHAR2(30)</td><td>Specific action (EVALUATE, APPROVE, REJECT, CREATE, MODIFY, RESOLVE, etc.)</td></tr>
+          <tr><td><code>RESULT</code></td><td>VARCHAR2(20)</td><td>Outcome (PASS, SOFT_BREACH, HARD_BREACH, APPROVED, REJECTED)</td></tr>
+          <tr><td><code>DETAIL_JSON</code></td><td>CLOB</td><td>JSON payload with full event details (exposure values, rule parameters, justification text)</td></tr>
+          <tr><td><code>SESSION_ID</code></td><td>VARCHAR2(64)</td><td>WebLogic session ID for security correlation</td></tr>
+          <tr><td><code>CORRELATION_ID</code></td><td>VARCHAR2(64)</td><td>Links related audit events (e.g., pre-trade check to override to execution)</td></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="admonition note">
       <div class="adm-title">Log Integrity</div>
-      Compliance audit logs must be write-once / append-only. No user — including system administrators — should have the ability to modify or delete audit log entries. Logs must be stored in a separate, access-controlled audit log repository with integrity verification (hash chaining or equivalent).
+      The <code>AA_COMPLIANCE_AUDIT</code> table is protected by Oracle Database Vault. No user - including DBAs - can modify or delete audit records. INSERT-only grants are assigned to the application service account. Oracle Audit Vault monitors all access to compliance audit tables.
     </div>
-
-    <h3>Log Monitoring &amp; Alerting</h3>
-    <p>The following events must trigger automated alerts to the Compliance Operations team:</p>
-    <ul>
-      <li>Unauthorized access attempt to SAR or blocked case records</li>
-      <li>Bulk export of compliance records outside of approved workflows</li>
-      <li>Any attempt to delete or truncate audit log files</li>
-      <li>Change to TMS monitoring rule parameters (thresholds, suppressions)</li>
-      <li>System user privilege escalation in compliance systems</li>
-      <li>Screening system connectivity failure exceeding 5 minutes</li>
-    </ul>
-
-    <h2>Independent Compliance Audit</h2>
-    <p>The BSA/AML program must be subject to periodic independent testing to assess its adequacy and effectiveness. "Independent" means the function must be organizationally separated from the compliance program it is reviewing.</p>
-
-    <h3>Audit Scope Requirements</h3>
+    <h2>Retention Policy</h2>
     <div class="tbl-wrap">
       <table>
-        <thead>
-          <tr><th>Audit Area</th><th>Minimum Scope</th><th>Suggested Frequency</th></tr>
-        </thead>
+        <thead><tr><th>Record Type</th><th>Retention Period</th><th>Storage Tier</th><th>Regulatory Basis</th></tr></thead>
         <tbody>
-          <tr><td>BSA/AML Program Adequacy</td><td>Review of all five program pillars against regulatory requirements</td><td>Annual</td></tr>
-          <tr><td>Transaction Monitoring System</td><td>Rule coverage analysis, back-testing, false positive/negative rate review, tuning documentation</td><td>Annual</td></tr>
-          <tr><td>SAR Filing Process</td><td>Statistical sample review of filed SARs and closed alerts (no-SAR decisions)</td><td>Annual</td></tr>
-          <tr><td>CTR Program</td><td>Aggregation accuracy, exemption program adequacy, filing timeliness</td><td>Annual</td></tr>
-          <tr><td>OFAC Sanctions Screening</td><td>Screening system coverage, match rate, false positive rate, disposition documentation</td><td>Annual</td></tr>
-          <tr><td>CDD / Beneficial Ownership</td><td>CDD completion rates, EDD file quality, beneficial ownership certification completeness</td><td>Annual</td></tr>
-          <tr><td>Training Completion</td><td>Training records review, curriculum currency, trainer qualifications</td><td>Annual</td></tr>
-          <tr><td>Recordkeeping &amp; Retention</td><td>Record accessibility, format compliance, destruction prohibition adherence</td><td>Every 2 years</td></tr>
+          <tr><td>Pre-trade compliance checks</td><td>7 years</td><td>Online (2 years) then archive</td><td>MiFID II RTS 25 (5 years); firm policy extends to 7</td></tr>
+          <tr><td>Post-trade compliance runs</td><td>7 years</td><td>Online (2 years) then archive</td><td>UCITS / AIFMD recordkeeping requirements</td></tr>
+          <tr><td>Override decisions</td><td>7 years</td><td>Online (full retention)</td><td>Critical for regulatory examination</td></tr>
+          <tr><td>Breach records</td><td>10 years</td><td>Online (3 years) then archive</td><td>Matches maximum regulatory retention requirement</td></tr>
+          <tr><td>Rule change history</td><td>Life of fund + 7 years</td><td>Online (full retention)</td><td>Required to reconstruct compliance state at any historical point</td></tr>
+          <tr><td>Regulatory report filings</td><td>10 years</td><td>Online (5 years) then archive</td><td>MiFID II transaction records (10 years)</td></tr>
         </tbody>
       </table>
     </div>
-
-    <h3>Exam-Ready Documentation Standard</h3>
-    <p>The institution must maintain a BSA/AML Examination Package — a ready-to-produce set of documents that can be delivered to regulators within 5 business days of an examination commencement notice. The package must include:</p>
+    <h2>Examination Readiness</h2>
+    <p>Asset Arena maintains an examination-ready compliance package that can be produced within 48 hours of a regulatory examination notice. The package includes:</p>
     <ul>
-      <li>Current BSA/AML Policy and Procedures (board-approved)</li>
-      <li>BSA Officer designation and organizational chart</li>
-      <li>Last two years of audit reports and management responses</li>
-      <li>Training completion records for the current and prior year</li>
-      <li>Written Enterprise Risk Assessment (current)</li>
-      <li>TMS rule inventory and change log</li>
-      <li>SAR filing statistics for the examination period</li>
-      <li>CTR filing statistics and exemption list</li>
-      <li>OFAC screening system documentation and validation testing results</li>
-      <li>Beneficial ownership certification completion rates</li>
+      <li>Current compliance rule set for all funds under examination</li>
+      <li>Complete breach history for the examination period with full lifecycle documentation</li>
+      <li>Override register with justifications and approval chains</li>
+      <li>Daily compliance run results for the examination period</li>
+      <li>Rule change log showing all modifications during the examination period</li>
+      <li>Regulatory report filing confirmations and regulator acknowledgments</li>
+      <li>Compliance officer and PM training records</li>
     </ul>
-
+    <h2>Access Controls</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Role</th><th>Audit Trail Access</th><th>Review Frequency</th></tr></thead>
+        <tbody>
+          <tr><td>Portfolio Manager</td><td>Read own fund compliance checks and breach records</td><td>N/A (self-service)</td></tr>
+          <tr><td>Compliance Officer</td><td>Read all compliance events for assigned funds; approve overrides</td><td>Daily review of breach and override events</td></tr>
+          <tr><td>Chief Compliance Officer</td><td>Full read access to all compliance audit data across all funds</td><td>Weekly review of escalated items</td></tr>
+          <tr><td>Internal Audit</td><td>Full read access; cannot modify; can export for audit workpapers</td><td>Annual compliance program audit</td></tr>
+          <tr><td>External Auditor / Regulator</td><td>Read access granted per engagement scope; time-limited credentials</td><td>Per examination schedule</td></tr>
+          <tr><td>System Administrator</td><td>No access to compliance audit data (Database Vault enforced)</td><td>N/A</td></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="admonition warn">
       <div class="adm-title">Legal Hold</div>
-      Upon receipt of a subpoena, legal hold notice, regulatory examination notice, or internal escalation involving potential litigation, all destruction of relevant records must be immediately suspended. The Legal department must be notified within 24 hours of any hold-triggering event. Preservation obligations supersede normal retention schedules.
+      Upon receipt of a regulatory investigation notice, litigation hold, or examination notice, all normal retention and archival schedules for affected funds are suspended. Records must be preserved in their current state until the hold is formally released by Legal. Asset Arena supports fund-level legal hold flags that prevent archival jobs from processing affected records.
     </div>
-
-    <h2>Access Controls for Compliance Systems</h2>
-    <div class="tbl-wrap">
-      <table>
-        <thead>
-          <tr><th>System / Data Type</th><th>Permitted Roles</th><th>Access Review Frequency</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>SAR data &amp; filed SARs</td><td>BSA Officer, Compliance Analyst (L2+), Legal, Audit (read-only)</td><td>Quarterly</td></tr>
-          <tr><td>TMS alert queue</td><td>Compliance Analyst (L1+), BSA Officer</td><td>Quarterly</td></tr>
-          <tr><td>OFAC sanctions screening system</td><td>Compliance, Operations (screening operators), BSA Officer</td><td>Quarterly</td></tr>
-          <tr><td>Customer CDD / EDD files</td><td>Compliance, Relationship Managers (read), Audit (read-only)</td><td">Semi-annual</td></tr>
-          <tr><td>Audit logs</td><td>Internal Audit, CISO, BSA Officer (read-only)</td><td>Annual</td></tr>
-          <tr><td>BSA E-Filing credentials</td><td>BSA Officer + designated filers only</td><td>Annual</td></tr>
-        </tbody>
-      </table>
-    </div>
-
     <div class="admonition tip">
-      <div class="adm-title">Examination Cooperation</div>
-      Financial institution personnel must cooperate fully with regulatory examinations. Examiners have the right to access all BSA records without advance notice during an on-site examination. Designated examination liaisons should coordinate all document requests and examiner interviews through the BSA Officer team.
+      <div class="adm-title">Splunk Integration</div>
+      Asset Arena compliance audit events are replicated to Splunk in near-real-time via Oracle GoldenGate. Compliance teams can use Splunk dashboards for ad-hoc queries, trend analysis, and anomaly detection across the audit trail without impacting production Oracle RAC performance.
     </div>
-
   </main>
 </div>
-
-<footer>
-  Compliance &amp; Regulatory Hub &mdash; Internal Use Only &mdash; Not for External Distribution
-</footer>
-
+<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
 </body>
 </html>
