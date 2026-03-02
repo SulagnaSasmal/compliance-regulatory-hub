@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Investment Mandates — Asset Arena Compliance Framework</title>
+<title>Investment Mandates — Asset Atrium Compliance Framework</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 <header class="top-banner">
-  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <div class="brand">Asset Atrium <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
 <div class="layout">
@@ -28,16 +28,16 @@
   </nav>
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Compliance Engine</div>
+      <div class="breadcrumb"><a href="index.html">Asset Atrium Compliance Framework</a> &rsaquo; Compliance Engine</div>
       <h1>Investment Mandates</h1>
-      <div class="subtitle">IPS modeling, compliance rule libraries, limit types, rule inheritance hierarchies, and exception management in Asset Arena Manager.</div>
+      <div class="subtitle">IPS modeling, compliance rule libraries, limit types, rule inheritance hierarchies, and exception management in Asset Atrium Manager.</div>
     </div>
     <div class="admonition note">
-      <div class="adm-title">Mandate Sources</div>
-      Investment mandates in Asset Arena originate from three sources: the <strong>fund prospectus</strong> (legally binding investor-facing limits), <strong>Investment Policy Statements (IPS)</strong> (client-specific guidelines), and <strong>regulatory requirements</strong> (UCITS, AIFMD, SEC). All three are modeled as compliance rules and evaluated together.
+      <div class="adm-title">Mandate sources</div>
+      Investment mandates in Asset Atrium originate from three sources: the <strong>fund prospectus</strong> (legally binding investor-facing limits), <strong>Investment Policy Statements (IPS)</strong> (client-specific guidelines), and <strong>regulatory requirements</strong> (UCITS, AIFMD, SEC). All three are modeled as compliance rules and evaluated together.
     </div>
-    <h2>Mandate Rule Library</h2>
-    <p>Asset Arena maintains a centralized rule library where compliance teams define reusable rule templates. Each rule template specifies a limit type, applicable asset class, threshold parameters, and breach severity. Rules are assigned to funds individually or through inheritance from fund groups.</p>
+    <h2>Mandate rule library</h2>
+    <p>Asset Atrium maintains a centralized rule library where compliance teams define reusable rule templates. Each rule template specifies a limit type, applicable asset class, threshold parameters, and breach severity. Rules are assigned to funds individually or through inheritance from fund groups.</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Rule Type</th><th>Description</th><th>Parameter Example</th><th>Breach Severity</th></tr></thead>
@@ -54,14 +54,14 @@
         </tbody>
       </table>
     </div>
-    <h2>Rule Inheritance Hierarchy</h2>
-    <p>Asset Arena supports a hierarchical rule assignment model. Rules defined at a higher level are inherited by all funds in the hierarchy. Fund-level overrides can tighten inherited limits but cannot relax them (unless explicitly authorized by CCO).</p>
+    <h2>Rule inheritance hierarchy</h2>
+    <p>Asset Atrium supports a hierarchical rule assignment model. Rules defined at a higher level are inherited by all funds in the hierarchy. Fund-level overrides can tighten inherited limits but cannot relax them (unless explicitly authorized by CCO).</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Hierarchy Level</th><th>Scope</th><th>Override Behavior</th></tr></thead>
         <tbody>
           <tr><td>Firm-wide</td><td>All funds managed by the firm</td><td>Cannot be relaxed at lower levels</td></tr>
-          <tr><td>Fund Family / Umbrella</td><td>All sub-funds under an umbrella structure (e.g., SICAV)</td><td>Inherits firm-wide; can add or tighten</td></tr>
+          <tr><td>Fund Family / Umbrella</td><td>All sub-funds under an umbrella structure (for example, SICAV)</td><td>Inherits firm-wide; can add or tighten</td></tr>
           <tr><td>Share Class Group</td><td>All share classes of a fund</td><td>Inherits umbrella; can add or tighten</td></tr>
           <tr><td>Fund / Sub-Fund</td><td>Individual fund or sub-fund</td><td>Inherits parent; can add or tighten; relaxation requires CCO approval</td></tr>
           <tr><td>Sleeve / Strategy</td><td>Portfolio sleeve or strategy bucket within a fund</td><td>Inherits fund; limits apply to sleeve NAV</td></tr>
@@ -69,20 +69,20 @@
       </table>
     </div>
     <div class="admonition warn">
-      <div class="adm-title">Inheritance Lock</div>
+      <div class="adm-title">Inheritance lock</div>
       Firm-wide and regulatory rules are flagged as <strong>locked</strong> in the rule library. Locked rules cannot be modified or overridden at any level in the hierarchy. Only the Chief Compliance Officer can unlock a rule, and the unlock action is recorded in the compliance audit trail.
     </div>
-    <h2>Mandate Lifecycle</h2>
+    <h2>Mandate lifecycle</h2>
     <ol>
-      <li><strong>Fund onboarding</strong>: Compliance team models the fund prospectus, IPS, and applicable regulatory limits as rules in Asset Arena.</li>
+      <li><strong>Fund onboarding</strong>: Compliance team models the fund prospectus, IPS, and applicable regulatory limits as rules in Asset Atrium.</li>
       <li><strong>Rule assignment</strong>: Rules are assigned to the fund directly or inherited from the hierarchy. Effective rule set is computed.</li>
       <li><strong>UAT validation</strong>: Rules are tested in simulation mode using historical portfolio data to verify expected behavior.</li>
       <li><strong>Activation</strong>: Rules are activated for pre-trade and post-trade compliance. Activation date is logged.</li>
       <li><strong>Mandate change</strong>: When IPS or prospectus changes, rules are versioned. Old version is deactivated; new version activated. Both versions are retained for audit.</li>
       <li><strong>Fund termination</strong>: Rules are deactivated upon fund liquidation. Rule history is retained per regulatory retention schedule.</li>
     </ol>
-    <h2>Rule Versioning</h2>
-    <p>Every change to a compliance rule creates a new version. Asset Arena maintains the complete version history including:</p>
+    <h2>Rule versioning</h2>
+    <p>Every change to a compliance rule creates a new version. Asset Atrium maintains the complete version history including:</p>
     <ul>
       <li>Effective date and expiry date for each version</li>
       <li>User who created or modified the rule</li>
@@ -90,25 +90,25 @@
       <li>Reason for change (free text + change category)</li>
       <li>Diff between previous and current version (parameter changes highlighted)</li>
     </ul>
-    <h2>Exception Handling</h2>
-    <p>In specific circumstances, a fund may require a temporary exception to a mandate rule. Asset Arena supports formal exception management:</p>
+    <h2>Exception handling</h2>
+    <p>In specific circumstances, a fund may require a temporary exception to a mandate rule. Asset Atrium supports formal exception management:</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Exception Type</th><th>Approval Required</th><th>Duration</th><th>Monitoring</th></tr></thead>
         <tbody>
           <tr><td>Temporary limit relaxation</td><td>CCO + PM + Fund Board (if prospectus limit)</td><td>Max 90 days; renewable once</td><td>Daily compliance check continues; exception flagged in report</td></tr>
           <tr><td>New instrument eligibility</td><td>Compliance Officer + PM</td><td>Permanent (new rule version) or time-limited</td><td>Pre-trade checks updated immediately</td></tr>
-          <tr><td>Regulatory grace period</td><td>Automatic (system-configured per regulation)</td><td>Per regulation (e.g., 30 days for UCITS passive breach)</td><td>Countdown visible in breach manager; auto-escalation at deadline</td></tr>
+          <tr><td>Regulatory grace period</td><td>Automatic (system-configured per regulation)</td><td>Per regulation (for example, 30 days for UCITS passive breach)</td><td>Countdown visible in breach manager; auto-escalation at deadline</td></tr>
           <tr><td>Benchmark transition</td><td>Compliance Officer</td><td>Until rebalance complete</td><td>Relative-to-benchmark rules suspended with audit flag</td></tr>
         </tbody>
       </table>
     </div>
     <div class="admonition tip">
-      <div class="adm-title">Bulk Rule Assignment</div>
-      When onboarding a large fund family (e.g., 50+ sub-funds under a SICAV), use the Asset Arena bulk rule assignment feature. Define rules at the umbrella level and apply them to all sub-funds in a single operation. Fund-specific overrides can be applied afterward.
+      <div class="adm-title">Bulk rule assignment</div>
+      When onboarding a large fund family (for example, 50+ sub-funds under a SICAV), use the Asset Atrium bulk rule assignment feature. Define rules at the umbrella level and apply them to all sub-funds in a single operation. Fund-specific overrides can be applied afterward.
     </div>
   </main>
 </div>
-<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+<footer>Asset Atrium Compliance Framework &mdash; SunBridge / FGS &mdash; Internal Use Only</footer>
 </body>
 </html>

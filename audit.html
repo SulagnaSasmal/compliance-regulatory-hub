@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Audit Trail &amp; Logging — Asset Arena Compliance Framework</title>
+<title>Audit Trail &amp; Logging — Asset Atrium Compliance Framework</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 <header class="top-banner">
-  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <div class="brand">Asset Atrium <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
 <div class="layout">
@@ -28,16 +28,16 @@
   </nav>
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Governance</div>
+      <div class="breadcrumb"><a href="index.html">Asset Atrium Compliance Framework</a> &rsaquo; Governance</div>
       <h1>Audit Trail &amp; Compliance Logging</h1>
-      <div class="subtitle">Compliance decision logging, rule evaluation records, override tracking, retention policies, and examination readiness for Asset Arena Manager.</div>
+      <div class="subtitle">Compliance decision logging, rule evaluation records, override tracking, retention policies, and examination readiness for Asset Atrium Manager.</div>
     </div>
     <div class="admonition imp">
-      <div class="adm-title">Regulatory Basis</div>
-      UCITS management companies and AIFMD-regulated managers must maintain records of all compliance monitoring activities, breach events, and remediation actions for a minimum of 5 years (10 years for MiFID II transaction records). Asset Arena's audit trail is designed to meet these requirements with tamper-evident, append-only logging to Oracle RAC audit tables.
+      <div class="adm-title">Regulatory basis</div>
+      UCITS management companies and AIFMD-regulated managers must maintain records of all compliance monitoring activities, breach events, and remediation actions for a minimum of 5 years (10 years for MiFID II transaction records). Asset Atrium's audit trail is designed to meet these requirements with tamper-evident, append-only logging to Oracle RAC audit tables.
     </div>
-    <h2>Audited Compliance Events</h2>
-    <p>The following compliance events are automatically logged to the Asset Arena audit trail:</p>
+    <h2>Audited compliance events</h2>
+    <p>The following compliance events are automatically logged to the Asset Atrium audit trail:</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Event Category</th><th>Events Logged</th><th>Data Captured</th></tr></thead>
@@ -53,8 +53,8 @@
         </tbody>
       </table>
     </div>
-    <h2>Audit Log Schema</h2>
-    <p>All compliance audit records are stored in the <code>AA_COMPLIANCE_AUDIT</code> Oracle table with the following structure:</p>
+    <h2>Audit log schema</h2>
+    <p>All compliance audit records are stored in the <code>AT_COMPLIANCE_AUDIT</code> Oracle table with the following structure:</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
@@ -69,15 +69,15 @@
           <tr><td><code>RESULT</code></td><td>VARCHAR2(20)</td><td>Outcome (PASS, SOFT_BREACH, HARD_BREACH, APPROVED, REJECTED)</td></tr>
           <tr><td><code>DETAIL_JSON</code></td><td>CLOB</td><td>JSON payload with full event details (exposure values, rule parameters, justification text)</td></tr>
           <tr><td><code>SESSION_ID</code></td><td>VARCHAR2(64)</td><td>WebLogic session ID for security correlation</td></tr>
-          <tr><td><code>CORRELATION_ID</code></td><td>VARCHAR2(64)</td><td>Links related audit events (e.g., pre-trade check to override to execution)</td></tr>
+          <tr><td><code>CORRELATION_ID</code></td><td>VARCHAR2(64)</td><td>Links related audit events (for example, pre-trade check to override to execution)</td></tr>
         </tbody>
       </table>
     </div>
     <div class="admonition note">
-      <div class="adm-title">Log Integrity</div>
-      The <code>AA_COMPLIANCE_AUDIT</code> table is protected by Oracle Database Vault. No user - including DBAs - can modify or delete audit records. INSERT-only grants are assigned to the application service account. Oracle Audit Vault monitors all access to compliance audit tables.
+      <div class="adm-title">Log integrity</div>
+      The <code>AT_COMPLIANCE_AUDIT</code> table is protected by Oracle Database Vault. No user - including DBAs - can modify or delete audit records. INSERT-only grants are assigned to the application service account. Oracle Audit Vault monitors all access to compliance audit tables.
     </div>
-    <h2>Retention Policy</h2>
+    <h2>Retention policy</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Record Type</th><th>Retention Period</th><th>Storage Tier</th><th>Regulatory Basis</th></tr></thead>
@@ -91,8 +91,8 @@
         </tbody>
       </table>
     </div>
-    <h2>Examination Readiness</h2>
-    <p>Asset Arena maintains an examination-ready compliance package that can be produced within 48 hours of a regulatory examination notice. The package includes:</p>
+    <h2>Examination readiness</h2>
+    <p>Asset Atrium maintains an examination-ready compliance package that can be produced within 48 hours of a regulatory examination notice. The package includes:</p>
     <ul>
       <li>Current compliance rule set for all funds under examination</li>
       <li>Complete breach history for the examination period with full lifecycle documentation</li>
@@ -102,7 +102,7 @@
       <li>Regulatory report filing confirmations and regulator acknowledgments</li>
       <li>Compliance officer and PM training records</li>
     </ul>
-    <h2>Access Controls</h2>
+    <h2>Access controls</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Role</th><th>Audit Trail Access</th><th>Review Frequency</th></tr></thead>
@@ -117,15 +117,15 @@
       </table>
     </div>
     <div class="admonition warn">
-      <div class="adm-title">Legal Hold</div>
-      Upon receipt of a regulatory investigation notice, litigation hold, or examination notice, all normal retention and archival schedules for affected funds are suspended. Records must be preserved in their current state until the hold is formally released by Legal. Asset Arena supports fund-level legal hold flags that prevent archival jobs from processing affected records.
+      <div class="adm-title">Legal hold</div>
+      Upon receipt of a regulatory investigation notice, litigation hold, or examination notice, all normal retention and archival schedules for affected funds are suspended. Records must be preserved in their current state until the hold is formally released by Legal. Asset Atrium supports fund-level legal hold flags that prevent archival jobs from processing affected records.
     </div>
     <div class="admonition tip">
-      <div class="adm-title">Splunk Integration</div>
-      Asset Arena compliance audit events are replicated to Splunk in near-real-time via Oracle GoldenGate. Compliance teams can use Splunk dashboards for ad-hoc queries, trend analysis, and anomaly detection across the audit trail without impacting production Oracle RAC performance.
+      <div class="adm-title">Splunk integration</div>
+      Asset Atrium compliance audit events are replicated to Splunk in near-real-time via Oracle GoldenGate. Compliance teams can use Splunk dashboards for ad-hoc queries, trend analysis, and anomaly detection across the audit trail without impacting production Oracle RAC performance.
     </div>
   </main>
 </div>
-<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+<footer>Asset Atrium Compliance Framework &mdash; SunBridge / FGS &mdash; Internal Use Only</footer>
 </body>
 </html>

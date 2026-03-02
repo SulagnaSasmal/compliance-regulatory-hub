@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Post-Trade Monitoring — Asset Arena Compliance Framework</title>
+<title>Post-Trade Monitoring — Asset Atrium Compliance Framework</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 <header class="top-banner">
-  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <div class="brand">Asset Atrium <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
 <div class="layout">
@@ -28,15 +28,15 @@
   </nav>
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Compliance Engine</div>
+      <div class="breadcrumb"><a href="index.html">Asset Atrium Compliance Framework</a> &rsaquo; Compliance Engine</div>
       <h1>Post-Trade Compliance Monitoring</h1>
       <div class="subtitle">Scheduled and event-driven portfolio compliance checks after trade settlement, corporate actions, and market movements.</div>
     </div>
     <div class="admonition note">
-      <div class="adm-title">Active vs. Passive Breaches</div>
-      An <strong>active breach</strong> results from a deliberate trade (e.g., PM overrides a soft limit). A <strong>passive breach</strong> results from external events — market price movements, credit rating downgrades, corporate actions, or investor redemptions changing portfolio weights without any trade.
+      <div class="adm-title">Active vs. passive breaches</div>
+      An <strong>active breach</strong> results from a deliberate trade (for example, PM overrides a soft limit). A <strong>passive breach</strong> results from external events — market price movements, credit rating downgrades, corporate actions, or investor redemptions changing portfolio weights without any trade.
     </div>
-    <h2>Post-Trade Compliance Triggers</h2>
+    <h2>Post-trade compliance triggers</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Trigger</th><th>Description</th><th>Frequency</th></tr></thead>
@@ -51,9 +51,9 @@
         </tbody>
       </table>
     </div>
-    <h2>Passive Breach Detection</h2>
-    <p>Passive breaches are detected during the scheduled daily compliance run. Asset Arena compares current portfolio exposures (post-NAV) against all active mandate rules. Breaches caused by market movements or external events are classified as passive and subject to different remediation timelines than active breaches.</p>
-    <h2>Remediation Timelines</h2>
+    <h2>Passive breach detection</h2>
+    <p>Passive breaches are detected during the scheduled daily compliance run. Asset Atrium compares current portfolio exposures (post-NAV) against all active mandate rules. Breaches caused by market movements or external events are classified as passive and subject to different remediation timelines than active breaches.</p>
+    <h2>Remediation timelines</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Breach Origin</th><th>Severity</th><th>Remediation Deadline</th><th>Escalation</th></tr></thead>
@@ -66,8 +66,8 @@
         </tbody>
       </table>
     </div>
-    <h2>Daily Compliance Report</h2>
-    <p>After each scheduled post-trade compliance run, Asset Arena generates a Daily Compliance Status Report containing:</p>
+    <h2>Daily compliance report</h2>
+    <p>After each scheduled post-trade compliance run, Asset Atrium generates a Daily Compliance Status Report containing:</p>
     <ul>
       <li>Fund-by-fund summary: total rules checked, passed, breached (active/passive)</li>
       <li>New breaches detected since prior run</li>
@@ -76,17 +76,17 @@
       <li>Overrides in effect with remaining approval validity</li>
     </ul>
     <div class="admonition warn">
-      <div class="adm-title">UCITS Passive Breach Rules</div>
-      Under UCITS regulations, passive breaches of the 5/10/40 issuer concentration rule must be reported to the fund's management company within 1 business day. If the breach is not remedied within a reasonable timeframe, regulators (e.g., CSSF for Luxembourg funds) must be notified. Asset Arena automatically flags UCITS-specific breach reporting obligations.
+      <div class="adm-title">UCITS passive breach rules</div>
+      Under UCITS regulations, passive breaches of the 5/10/40 issuer concentration rule must be reported to the fund's management company within 1 business day. If the breach is not remedied within a reasonable timeframe, regulators (for example, CSSF for Luxembourg funds) must be notified. Asset Atrium automatically flags UCITS-specific breach reporting obligations.
     </div>
-    <h2>Integration with Breach Manager</h2>
+    <h2>Integration with breach manager</h2>
     <p>All post-trade breaches are automatically forwarded to the <a href="breach.html">Breach Management</a> module for lifecycle tracking. The breach record includes the triggering event, affected rule, current vs. limit values, and recommended remediation action.</p>
     <div class="admonition tip">
-      <div class="adm-title">Optimizing Post-Trade Runs</div>
+      <div class="adm-title">Optimizing post-trade runs</div>
       For large fund families (500+ funds), post-trade compliance can be partitioned by processing zone. APAC funds are checked immediately after APAC NAV batch; EMEA and Americas follow their respective NAV windows. This prevents compliance bottlenecks during the global EOD cycle.
     </div>
   </main>
 </div>
-<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+<footer>Asset Atrium Compliance Framework &mdash; SunBridge / FGS &mdash; Internal Use Only</footer>
 </body>
 </html>

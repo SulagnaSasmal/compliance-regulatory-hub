@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pre-Trade Compliance — Asset Arena Compliance Framework</title>
+<title>Pre-Trade Compliance — Asset Atrium Compliance Framework</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 <header class="top-banner">
-  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <div class="brand">Asset Atrium <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
 <div class="layout">
@@ -28,24 +28,24 @@
   </nav>
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Compliance Engine</div>
+      <div class="breadcrumb"><a href="index.html">Asset Atrium Compliance Framework</a> &rsaquo; Compliance Engine</div>
       <h1>Pre-Trade Compliance</h1>
       <div class="subtitle">Real-time order-level compliance checking against investment guidelines, fund prospectus rules, and regulatory limits.</div>
     </div>
     <div class="admonition imp">
-      <div class="adm-title">Blocking Behavior</div>
-      Pre-trade compliance runs synchronously in the AAIM order submission path. A hard breach blocks the order from reaching the FIX Gateway. Soft breaches require authorized override before routing. All decisions are logged to the compliance audit trail.
+      <div class="adm-title">Blocking behavior</div>
+      Pre-trade compliance runs synchronously in the ATIM order submission path. A hard breach blocks the order from reaching the FIX Gateway. Soft breaches require authorized override before routing. All decisions are logged to the compliance audit trail.
     </div>
-    <h2>How Pre-Trade Compliance Works</h2>
-    <p>When a portfolio manager submits an order in Asset Arena Investment Manager (AAIM), the compliance engine evaluates the proposed trade against all active rules assigned to the fund. The engine simulates the post-trade portfolio state ("what-if") and checks every applicable limit.</p>
+    <h2>How pre-trade compliance works</h2>
+    <p>When a portfolio manager submits an order in Asset Atrium Investment Manager (ATIM), the compliance engine evaluates the proposed trade against all active rules assigned to the fund. The engine simulates the post-trade portfolio state ("what-if") and checks every applicable limit.</p>
     <ol>
-      <li><strong>Order submitted</strong> in AAIM (single order or block order with allocations).</li>
+      <li><strong>Order submitted</strong> in ATIM (single order or block order with allocations).</li>
       <li><strong>What-if calculation</strong>: engine computes projected positions, exposures, and weights assuming the order executes at limit price or last price.</li>
       <li><strong>Rule evaluation</strong>: every active compliance rule for the fund is checked against the projected state.</li>
       <li><strong>Result</strong>: PASS (no breaches), SOFT BREACH (override allowed), or HARD BREACH (order blocked).</li>
       <li><strong>Audit log</strong>: all rule evaluations and results recorded with timestamps and user IDs.</li>
     </ol>
-    <h2>Rule Categories</h2>
+    <h2>Rule categories</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Category</th><th>Example Rules</th><th>Breach Type</th></tr></thead>
@@ -63,7 +63,7 @@
         </tbody>
       </table>
     </div>
-    <h2>Hard vs. Soft Breaches</h2>
+    <h2>Hard vs. soft breaches</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Breach Type</th><th>Behavior</th><th>Override</th><th>Audit</th></tr></thead>
@@ -73,8 +73,8 @@
         </tbody>
       </table>
     </div>
-    <h2>Override Workflow</h2>
-    <p>When a soft breach is detected, the portfolio manager can request an override through the AAIM compliance panel:</p>
+    <h2>Override workflow</h2>
+    <p>When a soft breach is detected, the portfolio manager can request an override through the ATIM compliance panel:</p>
     <ol>
       <li>PM provides written justification for the override request.</li>
       <li>Request is routed to the designated compliance officer for the fund.</li>
@@ -84,23 +84,23 @@
       <li>Override is recorded in the compliance audit trail with full approval chain.</li>
     </ol>
     <div class="admonition warn">
-      <div class="adm-title">Override Escalation</div>
+      <div class="adm-title">Override escalation</div>
       If a single fund accumulates more than 3 active soft breach overrides in a rolling 30-day period, an automatic escalation is triggered to the Chief Compliance Officer (CCO) for review. This threshold is configurable per fund risk tier.
     </div>
-    <h2>Block Order Compliance</h2>
-    <p>For block orders that allocate across multiple funds, Asset Arena runs compliance checks against <strong>each recipient fund individually</strong>. A breach in one fund does not block allocation to other compliant funds — the non-compliant allocation is held pending override while compliant allocations proceed.</p>
-    <h2>Performance Considerations</h2>
+    <h2>Block order compliance</h2>
+    <p>For block orders that allocate across multiple funds, Asset Atrium runs compliance checks against <strong>each recipient fund individually</strong>. A breach in one fund does not block allocation to other compliant funds — the non-compliant allocation is held pending override while compliant allocations proceed.</p>
+    <h2>Performance considerations</h2>
     <ul>
       <li>Pre-trade compliance evaluation targets &lt;500ms response time for orders with up to 50 active rules.</li>
       <li>What-if exposure calculations use Oracle Coherence cached position data to avoid database round-trips.</li>
       <li>Rule evaluation is parallelized across rule categories using WebLogic work manager thread pools.</li>
     </ul>
     <div class="admonition tip">
-      <div class="adm-title">Testing Compliance Rules</div>
-      New or modified compliance rules should be tested in UAT using the AAIM compliance simulation mode, which evaluates rules without blocking orders. Simulation results are logged separately for review before production activation.
+      <div class="adm-title">Testing compliance rules</div>
+      New or modified compliance rules should be tested in UAT using the ATIM compliance simulation mode, which evaluates rules without blocking orders. Simulation results are logged separately for review before production activation.
     </div>
   </main>
 </div>
-<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+<footer>Asset Atrium Compliance Framework &mdash; SunBridge / FGS &mdash; Internal Use Only</footer>
 </body>
 </html>

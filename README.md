@@ -1,10 +1,10 @@
-# Asset Arena Compliance Framework
+﻿# Asset Atrium Compliance Framework
 
-Enterprise HTML documentation for the investment compliance capabilities of SunGard Asset Arena Manager (FIS) — covering pre-trade compliance, post-trade monitoring, investment mandate management, exposure limits, regulatory reporting, breach management, and audit governance.
+Enterprise HTML documentation for the investment compliance capabilities of SunBridge Asset Atrium Manager (FGS) — covering pre-trade compliance, post-trade monitoring, investment mandate management, exposure limits, regulatory reporting, breach management, and audit governance.
 
 ## Overview
 
-This site provides internal reference documentation for the Asset Arena Manager compliance engine. Content covers the full compliance lifecycle: from investment mandate modeling and pre-trade order checking through post-trade monitoring, breach management, and regulatory reporting for UCITS, AIFMD, MiFID II, SEC, and other frameworks.
+This site provides internal reference documentation for the Asset Atrium Manager compliance engine. Content covers the full compliance lifecycle: from investment mandate modeling and pre-trade order checking through post-trade monitoring, breach management, and regulatory reporting for UCITS, AIFMD, MiFID II, SEC, and other frameworks.
 
 Static HTML site hosted via GitHub Pages. No build tools or backend required.
 
@@ -46,7 +46,7 @@ compliance-regulatory-hub/
 
 ## Platform Context
 
-Asset Arena Manager is an enterprise investment management platform originally developed by SunGard (now FIS). The compliance engine documented here operates within the Asset Arena ecosystem:
+Asset Atrium Manager is an enterprise investment management platform originally developed by SunBridge (now FGS). The compliance engine documented here operates within the Asset Atrium ecosystem:
 
 - **Runtime**: J2EE on Oracle WebLogic 14c
 - **Database**: Oracle 19c RAC
@@ -62,4 +62,4 @@ Open `index.html` in any browser, or deploy to GitHub Pages for hosted access.
 
 ---
 
-*Asset Arena Compliance Framework — SunGard / FIS — Internal Use Only*
+*Asset Atrium Compliance Framework — SunBridge / FGS — Internal Use Only*

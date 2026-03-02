@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Exposure &amp; Concentration — Asset Arena Compliance Framework</title>
+<title>Exposure &amp; Concentration — Asset Atrium Compliance Framework</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 <header class="top-banner">
-  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <div class="brand">Asset Atrium <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
 <div class="layout">
@@ -28,15 +28,15 @@
   </nav>
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb"><a href="index.html">Asset Arena Compliance Framework</a> &rsaquo; Risk &amp; Limits</div>
+      <div class="breadcrumb"><a href="index.html">Asset Atrium Compliance Framework</a> &rsaquo; Risk &amp; Limits</div>
       <h1>Exposure &amp; Concentration Limits</h1>
       <div class="subtitle">Sector, country, currency, issuer, and counterparty exposure calculations with lookthrough, netting, and stress testing.</div>
     </div>
     <div class="admonition imp">
-      <div class="adm-title">Exposure Engine</div>
-      Asset Arena's exposure calculator runs in two modes: <strong>real-time</strong> (for pre-trade what-if analysis using Oracle Coherence cached data) and <strong>batch</strong> (for post-trade compliance using official NAV positions from Oracle RAC). Both modes use the same calculation logic to ensure consistency.
+      <div class="adm-title">Exposure engine</div>
+      Asset Atrium's exposure calculator runs in two modes: <strong>real-time</strong> (for pre-trade what-if analysis using Oracle Coherence cached data) and <strong>batch</strong> (for post-trade compliance using official NAV positions from Oracle RAC). Both modes use the same calculation logic to ensure consistency.
     </div>
-    <h2>Exposure Dimensions</h2>
+    <h2>Exposure dimensions</h2>
     <p>The compliance engine calculates portfolio exposure across multiple dimensions. Each dimension can be used as the basis for compliance rules and limits.</p>
     <div class="tbl-wrap">
       <table>
@@ -55,8 +55,8 @@
         </tbody>
       </table>
     </div>
-    <h2>UCITS Concentration Rules (5/10/40)</h2>
-    <p>For UCITS-regulated funds, Asset Arena enforces the issuer concentration limits defined in UCITS Directive Article 52:</p>
+    <h2>UCITS concentration rules (5/10/40)</h2>
+    <p>For UCITS-regulated funds, Asset Atrium enforces the issuer concentration limits defined in UCITS Directive Article 52:</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Rule</th><th>Limit</th><th>Description</th></tr></thead>
@@ -69,8 +69,8 @@
         </tbody>
       </table>
     </div>
-    <h2>Lookthrough Calculation</h2>
-    <p>When a fund holds units in other collective investment schemes (fund-of-funds) or structured products, Asset Arena performs lookthrough analysis to calculate the true underlying exposures:</p>
+    <h2>Lookthrough calculation</h2>
+    <p>When a fund holds units in other collective investment schemes (fund-of-funds) or structured products, Asset Atrium performs lookthrough analysis to calculate the true underlying exposures:</p>
     <ul>
       <li><strong>Fund-of-funds</strong>: Underlying fund holdings are decomposed to calculate issuer, sector, and country exposures at the security level.</li>
       <li><strong>ETFs</strong>: Index composition is used as a proxy when full holdings are not available; refreshed daily from fund administrator feeds.</li>
@@ -78,11 +78,11 @@
       <li><strong>Derivatives</strong>: Notional exposure and delta-adjusted exposure are calculated for the underlying reference instrument.</li>
     </ul>
     <div class="admonition note">
-      <div class="adm-title">Lookthrough Depth</div>
-      Asset Arena supports configurable lookthrough depth (1 level, 2 levels, or full recursive). For UCITS funds, at least one level of lookthrough is required for fund-of-fund holdings. Deeper lookthrough increases computation time but provides more accurate concentration measurement.
+      <div class="adm-title">Lookthrough depth</div>
+      Asset Atrium supports configurable lookthrough depth (1 level, 2 levels, or full recursive). For UCITS funds, at least one level of lookthrough is required for fund-of-fund holdings. Deeper lookthrough increases computation time but provides more accurate concentration measurement.
     </div>
-    <h2>Derivative Exposure Calculation</h2>
-    <p>Asset Arena supports two methods for calculating global derivative exposure as required by UCITS:</p>
+    <h2>Derivative exposure calculation</h2>
+    <p>Asset Atrium supports two methods for calculating global derivative exposure as required by UCITS:</p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Method</th><th>Applicability</th><th>Calculation</th></tr></thead>
@@ -93,24 +93,24 @@
         </tbody>
       </table>
     </div>
-    <h2>Stress Testing</h2>
-    <p>Asset Arena integrates stress testing with compliance monitoring to assess how portfolios behave under adverse scenarios:</p>
+    <h2>Stress testing</h2>
+    <p>Asset Atrium integrates stress testing with compliance monitoring to assess how portfolios behave under adverse scenarios:</p>
     <ul>
-      <li><strong>Historical scenarios</strong>: Replay market conditions from specific dates (e.g., 2008 GFC, 2020 COVID, 2022 rate shock) against current portfolio.</li>
+      <li><strong>Historical scenarios</strong>: Replay market conditions from specific dates (for example, 2008 GFC, 2020 COVID, 2022 rate shock) against current portfolio.</li>
       <li><strong>Hypothetical scenarios</strong>: User-defined shocks to interest rates, equity markets, credit spreads, or FX rates applied simultaneously.</li>
       <li><strong>Compliance impact</strong>: After applying stress scenario, all compliance rules are re-evaluated to identify rules that would breach under stress.</li>
       <li><strong>Reporting</strong>: Stress test results are included in AIFMD Annex IV reporting and internal risk committee reports.</li>
     </ul>
     <div class="admonition warn">
-      <div class="adm-title">Counterparty Exposure Netting</div>
-      OTC derivative counterparty exposure calculations apply netting only where a valid ISDA Master Agreement and Credit Support Annex (CSA) are documented in Asset Arena. Without a confirmed netting agreement, gross positive exposure is used for compliance limit checks.
+      <div class="adm-title">Counterparty exposure netting</div>
+      OTC derivative counterparty exposure calculations apply netting only where a valid ISDA Master Agreement and Credit Support Annex (CSA) are documented in Asset Atrium. Without a confirmed netting agreement, gross positive exposure is used for compliance limit checks.
     </div>
     <div class="admonition tip">
-      <div class="adm-title">Exposure Dashboard</div>
-      The AAIM compliance dashboard provides a real-time heat map of exposure concentrations across all dimensions. Cells approaching 80% of their limit threshold are highlighted amber; cells exceeding 90% are highlighted red. This gives portfolio managers early warning before breaching limits.
+      <div class="adm-title">Exposure dashboard</div>
+      The ATIM compliance dashboard provides a real-time heat map of exposure concentrations across all dimensions. Cells approaching 80% of their limit threshold are highlighted amber; cells exceeding 90% are highlighted red. This gives portfolio managers early warning before breaching limits.
     </div>
   </main>
 </div>
-<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+<footer>Asset Atrium Compliance Framework &mdash; SunBridge / FGS &mdash; Internal Use Only</footer>
 </body>
 </html>

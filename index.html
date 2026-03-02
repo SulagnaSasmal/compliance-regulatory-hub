@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Asset Arena Compliance Framework — Overview</title>
+<title>Asset Atrium Compliance Framework — Overview</title>
 <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
 <header class="top-banner">
-  <div class="brand">Asset Arena <span>Compliance Framework</span></div>
+  <div class="brand">Asset Atrium <span>Compliance Framework</span></div>
   <span class="badge">Internal Use Only</span>
 </header>
 <div class="layout">
@@ -28,22 +28,22 @@
   </nav>
   <main class="content">
     <div class="page-header">
-      <div class="breadcrumb">Asset Arena Compliance Framework</div>
+      <div class="breadcrumb">Asset Atrium Compliance Framework</div>
       <h1>Overview &amp; Compliance Framework</h1>
-      <div class="subtitle">Investment compliance engine for SunGard Asset Arena Manager — pre-trade, post-trade, mandate monitoring, and regulatory reporting.</div>
+      <div class="subtitle">Investment compliance engine for SunBridge Asset Atrium Manager — pre-trade, post-trade, mandate monitoring, and regulatory reporting.</div>
     </div>
     <div class="admonition note">
       <div class="adm-title">Scope</div>
-      This documentation covers the investment compliance capabilities of Asset Arena Manager (FIS). It applies to all fund structures managed on the platform — UCITS, AIFMD, SEC-registered, and unregulated vehicles. It does not cover AML/KYC or financial crime compliance.
+      This documentation covers the investment compliance capabilities of Asset Atrium Manager (FGS). It applies to all fund structures managed on the platform — UCITS, AIFMD, SEC-registered, and unregulated vehicles. It does not cover AML/KYC or financial crime compliance.
     </div>
-    <h2>Compliance Engine Overview</h2>
-    <p>Asset Arena Manager includes a built-in compliance engine that evaluates investment guidelines at two critical points: <strong>pre-trade</strong> (before order execution) and <strong>post-trade</strong> (after settlement and on a scheduled basis). The engine supports rule-based compliance checking against client mandates, fund prospectus limits, and regulatory requirements.</p>
-    <h2>Compliance Framework Architecture</h2>
+    <h2>Compliance engine overview</h2>
+    <p>Asset Atrium Manager includes a built-in compliance engine that evaluates investment guidelines at two critical points: <strong>pre-trade</strong> (before order execution) and <strong>post-trade</strong> (after settlement and on a scheduled basis). The engine supports rule-based compliance checking against client mandates, fund prospectus limits, and regulatory requirements.</p>
+    <h2>Compliance framework architecture</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Component</th><th>Function</th><th>Trigger</th></tr></thead>
         <tbody>
-          <tr><td>Pre-Trade Compliance Engine</td><td>Evaluates proposed orders against investment guidelines before execution</td><td>Order submission via AAIM</td></tr>
+          <tr><td>Pre-Trade Compliance Engine</td><td>Evaluates proposed orders against investment guidelines before execution</td><td>Order submission via ATIM</td></tr>
           <tr><td>Post-Trade Compliance Monitor</td><td>Checks portfolio positions against mandates after settlement</td><td>Scheduled (daily) + event-driven</td></tr>
           <tr><td>Mandate Rule Library</td><td>Configurable rule definitions (limits, restrictions, eligibility)</td><td>Fund onboarding / mandate change</td></tr>
           <tr><td>Exposure Calculator</td><td>Real-time and batch exposure computation (sector, country, currency, issuer)</td><td>Position change / pricing update</td></tr>
@@ -52,7 +52,7 @@
         </tbody>
       </table>
     </div>
-    <h2>Supported Regulatory Frameworks</h2>
+    <h2>Supported regulatory frameworks</h2>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>Framework</th><th>Jurisdiction</th><th>Applicability</th><th>Status</th></tr></thead>
@@ -67,7 +67,7 @@
         </tbody>
       </table>
     </div>
-    <h2>Documentation Sections</h2>
+    <h2>Documentation sections</h2>
     <div class="card-grid">
       <a href="pre-trade.html" class="card"><div class="card-icon">&#9989;</div><div class="card-title">Pre-Trade Compliance</div><div class="card-desc">Order-level compliance checks, hard/soft breaches, override workflows.</div></a>
       <a href="post-trade.html" class="card"><div class="card-icon">&#128202;</div><div class="card-title">Post-Trade Monitoring</div><div class="card-desc">Scheduled position checks, passive breach detection, remediation timelines.</div></a>
@@ -78,11 +78,11 @@
       <a href="audit.html" class="card"><div class="card-icon">&#128269;</div><div class="card-title">Audit Trail</div><div class="card-desc">Compliance decision logging, retention, examination readiness.</div></a>
     </div>
     <div class="admonition tip">
-      <div class="adm-title">Getting Started</div>
+      <div class="adm-title">Getting started</div>
       For new fund onboarding, start with <a href="mandates.html">Investment Mandates</a> to configure fund-level compliance rules, then review <a href="pre-trade.html">Pre-Trade Compliance</a> for order-level setup.
     </div>
   </main>
 </div>
-<footer>Asset Arena Compliance Framework &mdash; SunGard / FIS &mdash; Internal Use Only</footer>
+<footer>Asset Atrium Compliance Framework &mdash; SunBridge / FGS &mdash; Internal Use Only</footer>
 </body>
 </html>
