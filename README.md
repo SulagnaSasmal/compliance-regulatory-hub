@@ -38,11 +38,39 @@ compliance-regulatory-hub/
     └── style.css
 ```
 
+## Dark / Light Mode
+
+All pages support dark and light themes via a toggle button (◐ / ☀) in the top banner. The selected theme persists in `localStorage`. System `prefers-color-scheme` is respected on first visit.
+
+## Status
+
+**Phase 2 — Operations & Maintenance — Complete**
+
+| Section | Status |
+|---------|--------|
+| Overview & Compliance Framework architecture | Complete |
+| Pre-Trade Compliance (hard/soft breaches, overrides) | Complete |
+| Post-Trade Monitoring (passive breach detection) | Complete |
+| Investment Mandates & IPS modeling | Complete |
+| Exposure & Concentration limits (UCITS 5/10/40) | Complete |
+| Regulatory Reporting (UCITS, AIFMD, MiFID II, Form PF) | Complete |
+| Breach Management lifecycle & escalation | Complete |
+| Audit Trail & Oracle logging | Complete |
+| Dark / light theme support | Complete |
+
+## Future Enhancements
+
+- EMIR trade reporting detailed procedures
+- CPO-PQR CFTC reporting workflow
+- Solvency II Pillar 3 configuration guide
+- Performance attribution compliance integration
+
 ## Technology
 
 - HTML (~ 94%)
 - CSS (~ 6%)
-- No JavaScript, no frameworks, no build pipeline
+- Minimal JavaScript (theme toggle only)
+- No frameworks, no build pipeline
 
 ## Platform Context
 
